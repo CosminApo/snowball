@@ -6,6 +6,6 @@ int main()
 {
 	Core core;
 	core.dummy();
-	std::cout << "Hello word" << std::endl;
+	std::cout << "Hello world" << std::endl;
 	return 0;
 }
