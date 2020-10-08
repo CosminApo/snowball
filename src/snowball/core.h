@@ -1,4 +1,10 @@
-struct Core
+#include <memory>
+
+
+namespace snowball
 {
-	void dummy();
-};
+	struct Core
+	{
+		static std::shared_ptr<Core> initialize(); //static to initialize without object
+	};
+}

@@ -1,5 +1,11 @@
 #include "core.h"
-void Core::dummy()
+
+namespace snowball
 {
-	//tbd
+	std::shared_ptr<Core> snowball::Core::initialize()
+	{
+		std::shared_ptr<Core> rtn = std::make_shared<Core>();
+		return rtn;
+	}
 }
+
