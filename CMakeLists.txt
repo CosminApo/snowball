@@ -3,7 +3,6 @@ project(SNOWBALL)
 
 include_directories(
 	src
-	${CMAKE_SOURCE_DIR}/contrib/SDL2-2.0.12/include
 )
 
 if (MSVC)
@@ -12,12 +11,10 @@ if (MSVC)
 endif()
 
 
-link_directories(${CMAKE_SOURCE_DIR}/contrib/SDL2-2.0.12/lib/x64)
 
 add_executable(demo WIN32
 	src/demo/main.cpp
 )
-
 
 
 add_library(rend
@@ -37,16 +34,22 @@ else()
 endif()
 
 
-target_link_libraries(demo snowball)
 
-target_link_libraries(demo SDL2 SDL2Main)
 
 # .h files included to show in VS
 add_library(snowball 
 	src/snowball/core.cpp
-	src/snowball/core.h
+	src/snowball/entity.cpp
+	src/snowball/component.cpp
+    src/snowball/core.h
+    src/snowball/entity.h
+	src/snowball/component.h
+	src/snowball/snowball.h
 )
 
+target_link_libraries(demo snowball)
+
+target_link_libraries(demo SDL2 SDL2Main)
 target_link_libraries(snowball rend)
 
 
