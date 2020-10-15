@@ -1,12 +1,30 @@
-#ifndef MYENGINE_COMPONENT_H
-#define MYENGINE_COMPONENT_H
+#ifndef SNOWBALL_COMPONENT_H
+#define SNOWBALL_COMPONENT_H
+
+#include <memory>
 
 namespace snowball
 {
 
+    struct Entity;
+    struct Core;
+
     struct Component
     {
-        int dummy;
+        friend struct snowball::Entity;
+
+        void tick();
+        void render();
+        virtual void onTick();
+        virtual void onRender();
+
+        virtual void onInitialize();
+
+        std::shared_ptr<Entity> getEntity();
+        std::shared_ptr<Core> getCore();
+
+    private:
+        std::weak_ptr<Entity> entity;
     };
 
 }

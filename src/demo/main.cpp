@@ -12,14 +12,15 @@ struct Player : public Component
     int dummy;
 };
 
-int main(int argc, char* argv[])
+int main()
 {
-
     std::shared_ptr<Core> core = Core::initialize();
 	
     std::shared_ptr<Entity> pe = core->addEntity();
   
-    std::shared_ptr<Player> pc = pe->addComponent<Player>();
+    std::shared_ptr<Renderer> pc = pe->addComponent<Renderer>();
+
+    core->start();
 
 
 	return 0;

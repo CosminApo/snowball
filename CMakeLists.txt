@@ -12,10 +12,11 @@ endif()
 
 
 
-add_executable(demo WIN32
+add_executable(demo
 	src/demo/main.cpp
 )
 
+add_definitions(-DSDL_MAIN_HANDLED)
 
 add_library(rend
   src/rend/Exception.cpp
@@ -26,6 +27,15 @@ add_library(rend
   src/rend/Buffer.cpp
   src/rend/Mesh.cpp
   src/rend/Util.cpp
+
+  src/rend/Exception.h
+  src/rend/Context.h
+  src/rend/Texture.h
+  src/rend/RenderTexture.h
+  src/rend/Shader.h
+  src/rend/Buffer.h
+  src/rend/Mesh.h
+  src/rend/Util.h
 )
 if(MSVC OR MINGW)
   target_link_libraries(rend glew32 opengl32)
@@ -41,15 +51,18 @@ add_library(snowball
 	src/snowball/core.cpp
 	src/snowball/entity.cpp
 	src/snowball/component.cpp
+    src/snowball/renderer.cpp
+
     src/snowball/core.h
     src/snowball/entity.h
 	src/snowball/component.h
+    src/snowball/renderer.h
 	src/snowball/snowball.h
 )
 
 target_link_libraries(demo snowball)
 
-target_link_libraries(demo SDL2 SDL2Main)
+target_link_libraries(demo SDL2)
 target_link_libraries(snowball rend)
 
 
