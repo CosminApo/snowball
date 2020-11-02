@@ -6,6 +6,8 @@
 #include "component.h"
 #include "renderer.h"
 
+
+
 using namespace snowball;
 
 #endif // !_SNOWBALL_SNOWBALL_H

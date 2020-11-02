@@ -1,6 +1,8 @@
 #include <vector>
 #include "component.h"
 #include <memory>
+#include "transform.h"
+
 
 namespace snowball
 {
@@ -9,6 +11,7 @@ namespace snowball
 
 	struct Entity
 	{
+
 		friend struct ::snowball::Core;
 
 		template <typename T>
@@ -22,9 +25,27 @@ namespace snowball
 
 			return rtn;
 		}
+
+
+		template <typename T>
+		std::shared_ptr<T> getComponent()
+		{
+			//use it by making a shared ptr to store it in
+			for (size_t ci = 0; ci < components.size(); ci++)
+			{
+				std::shared_ptr<T> rtn = std::dynamic_pointer_cast<T>(components.at(ci));
+				if (rtn)
+				{
+					return rtn;
+				}
+			}
+			//add exception
+		}
+
 		void tick();
 		void render();
 		
+
 		std::shared_ptr<Core> getCore();
 
 	private:

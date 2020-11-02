@@ -1,5 +1,5 @@
 #include "core.h"
-#include "Entity.h"
+#include "entity.h"
 
 namespace snowball
 {
@@ -8,9 +8,12 @@ namespace snowball
 	{
 		std::shared_ptr<Core> rtn = std::make_shared<Core>();
 		rtn->self = rtn;
+		rtn->sc = std::make_shared<Screen>();
 
-
-		rtn->window = SDL_CreateWindow("Snowball", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN| SDL_WINDOW_RESIZABLE);
+		rtn->window = SDL_CreateWindow("Snowball", //title
+			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, //pos
+			rtn->sc->getWindow_Height(), rtn->sc->getWindow_Width(),  //scale
+			SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN| SDL_WINDOW_RESIZABLE); //flags
 
 		if (!rtn->window)
 		{
@@ -26,6 +29,7 @@ namespace snowball
 
 		rtn->context = rend::Context::initialize();
 
+
 		return rtn;
 	}
 	std::shared_ptr<Entity> Core::addEntity()
@@ -33,11 +37,16 @@ namespace snowball
 		std::shared_ptr<Entity> rtn = std::make_shared<Entity>();
 		rtn->core = self;
 		rtn->self = rtn;
+		std::shared_ptr<Transform> tc = rtn->addComponent<Transform>();
 		entities.push_back(rtn);
 		return rtn;
 	}
-	void Core::start()
+	std::shared_ptr<Screen> Core::getScreen()
 	{
+		return sc;
+	}
+	void Core::start()
+	{		
 		bool running = true;
 		SDL_Event e = { 0 };
 		while (running)

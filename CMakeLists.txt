@@ -11,7 +11,6 @@ if (MSVC)
 endif()
 
 
-
 add_executable(demo
 	src/demo/main.cpp
 )
@@ -52,12 +51,16 @@ add_library(snowball
 	src/snowball/entity.cpp
 	src/snowball/component.cpp
     src/snowball/renderer.cpp
+	src/snowball/transform.cpp
+	src/snowball/screen.cpp
 
     src/snowball/core.h
     src/snowball/entity.h
 	src/snowball/component.h
     src/snowball/renderer.h
 	src/snowball/snowball.h
+	src/snowball/transform.h
+	src/snowball/screen.h
 )
 
 target_link_libraries(demo snowball)
