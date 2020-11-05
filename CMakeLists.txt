@@ -37,7 +37,7 @@ add_library(rend
   src/rend/Util.h
 )
 if(MSVC OR MINGW)
-  target_link_libraries(rend glew32 opengl32)
+  target_link_libraries(rend glew32 opengl32 OpenAL32)
 else()
   target_link_libraries(rend GLEW GL)
 endif()
@@ -53,6 +53,9 @@ add_library(snowball
     src/snowball/renderer.cpp
 	src/snowball/transform.cpp
 	src/snowball/screen.cpp
+	src/snowball/resource.cpp
+	src/snowball/resourceManager.cpp
+	src/snowball/sound.cpp
 
     src/snowball/core.h
     src/snowball/entity.h
@@ -61,6 +64,9 @@ add_library(snowball
 	src/snowball/snowball.h
 	src/snowball/transform.h
 	src/snowball/screen.h
+	src/snowball/resource.h
+	src/snowball/resourceManager.h
+	src/snowball/sound.h
 )
 
 target_link_libraries(demo snowball)

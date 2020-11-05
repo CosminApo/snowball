@@ -30,6 +30,28 @@ namespace snowball
 		rtn->context = rend::Context::initialize();
 
 
+
+		rtn->device = alcOpenDevice(NULL);
+		if (!rtn->device)
+		{
+			throw rend::Exception("Failed to open default sound device");
+		}
+		
+		rtn->alContext = alcCreateContext(rtn->device, NULL);
+		if (!rtn->alContext)
+		{
+			alcCloseDevice(rtn->device);
+			throw rend::Exception("Failed to create sound context");
+		}
+		if (!alcMakeContextCurrent(rtn->alContext))
+		{
+			alcDestroyContext(rtn->alContext);
+			alcCloseDevice(rtn->device);
+			throw rend::Exception("Failed to make context current");
+		}
+
+		//todo close this at the end
+
 		return rtn;
 	}
 	std::shared_ptr<Entity> Core::addEntity()

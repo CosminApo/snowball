@@ -15,7 +15,7 @@ namespace snowball
 
 	private:
 		//model = translation*rotation*scale
-		glm::mat4 model = glm::mat4(1.0);
+		glm::mat4 model;
 
 		//init to 1 to avoid * 0
 		glm::vec3 position;

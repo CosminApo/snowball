@@ -41,8 +41,8 @@ namespace snowball
 		shape->add(glm::vec3(0.5f, -0.5f, -10.5f));
 
 		//just to test mats
-		/*float angle(1.0f);
-		getEntity()->getComponent<Transform>()->setRotationAngle(&angle);*/
+		float angle(1.0f);
+		getEntity()->getComponent<Transform>()->setRotationAngle(&angle);
 	}
 	void Renderer::onRender()
 	{

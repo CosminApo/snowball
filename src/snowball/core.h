@@ -3,7 +3,8 @@
 #include <SDL.h>
 #include <rend/rend.h>
 #include "screen.h"
-
+#include <AL/al.h>
+#include <AL/alc.h>
 
 namespace snowball
 {
@@ -26,6 +27,12 @@ namespace snowball
 		SDL_GLContext glContext;
 		std::shared_ptr<Screen> sc;
 		//////
+
+		/*Sound related (OPENAL)*/
+		ALCdevice* device;
+		ALCcontext* alContext;
+
+		/////
 
 		std::weak_ptr<Core> self; 
 		std::shared_ptr<rend::Context> context; //TODO inside contexts destructor, delete window and glContext
