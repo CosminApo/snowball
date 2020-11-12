@@ -5,7 +5,7 @@
 #include "entity.h"
 #include "component.h"
 #include "renderer.h"
-
+#include "soundSource.h"
 
 
 using namespace snowball;

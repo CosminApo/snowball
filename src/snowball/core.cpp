@@ -3,13 +3,13 @@
 
 namespace snowball
 {
-	
+
 	std::shared_ptr<Core> snowball::Core::initialize()
 	{
 		std::shared_ptr<Core> rtn = std::make_shared<Core>();
 		rtn->self = rtn;
 		rtn->sc = std::make_shared<Screen>();
-
+		rtn->rm = std::make_shared<ResourceManager>();
 		rtn->window = SDL_CreateWindow("Snowball", //title
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, //pos
 			rtn->sc->getWindow_Height(), rtn->sc->getWindow_Width(),  //scale
@@ -29,12 +29,11 @@ namespace snowball
 
 		rtn->context = rend::Context::initialize();
 
-
-
+		// Open the default device 
 		rtn->device = alcOpenDevice(NULL);
 		if (!rtn->device)
 		{
-			throw rend::Exception("Failed to open default sound device");
+	  		throw rend::Exception("Failed to open default sound device");
 		}
 		
 		rtn->alContext = alcCreateContext(rtn->device, NULL);
@@ -66,6 +65,10 @@ namespace snowball
 	std::shared_ptr<Screen> Core::getScreen()
 	{
 		return sc;
+	}
+	std::shared_ptr<ResourceManager> Core::getRm()
+	{
+		return self.lock()->rm;
 	}
 	void Core::start()
 	{		

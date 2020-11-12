@@ -4,6 +4,10 @@
 
 namespace snowball
 {
+	ALuint Sound::getID()
+	{
+		return id;
+	}
 	void Sound::onLoad(const std::string _path)
 	{
 		alGenBuffers(1, &id);

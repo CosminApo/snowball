@@ -9,6 +9,8 @@ int main()
   
     std::shared_ptr<Renderer> pc = pe->addComponent<Renderer>();
 
+    std::shared_ptr<SoundSource> sc = pe->addComponent<SoundSource>("Jump3");
+
     core->start();
     
 

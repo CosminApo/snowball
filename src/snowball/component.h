@@ -28,5 +28,5 @@ namespace snowball
     };
 
 }
-
+//resource manager swap t to be resource and rs load can work
 #endif

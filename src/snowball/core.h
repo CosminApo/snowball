@@ -5,6 +5,7 @@
 #include "screen.h"
 #include <AL/al.h>
 #include <AL/alc.h>
+#include "resourceManager.h"
 
 namespace snowball
 {
@@ -20,6 +21,7 @@ namespace snowball
 		static std::shared_ptr<Core> initialize(); //static to initialize without object
 		std::shared_ptr<Entity> addEntity();
 		std::shared_ptr<Screen> getScreen();
+		std::shared_ptr<ResourceManager> getRm();
 		void start();
 	private:
 		/*SDL related*/
@@ -34,6 +36,8 @@ namespace snowball
 
 		/////
 
+
+		std::shared_ptr<ResourceManager> rm;
 		std::weak_ptr<Core> self; 
 		std::shared_ptr<rend::Context> context; //TODO inside contexts destructor, delete window and glContext
 		std::vector<std::shared_ptr<Entity>> entities;

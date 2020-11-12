@@ -56,6 +56,10 @@ add_library(snowball
 	src/snowball/resource.cpp
 	src/snowball/resourceManager.cpp
 	src/snowball/sound.cpp
+    src/snowball/soundSource.cpp
+	src/snowball/texture.cpp
+	src/snowball/keyboard.cpp
+
 
     src/snowball/core.h
     src/snowball/entity.h
@@ -67,6 +71,10 @@ add_library(snowball
 	src/snowball/resource.h
 	src/snowball/resourceManager.h
 	src/snowball/sound.h
+	src/snowball/texture.h
+    src/snowball/soundSource.h
+	src/snowball/keyboard.h
+
 )
 
 target_link_libraries(demo snowball)

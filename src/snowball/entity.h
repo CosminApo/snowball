@@ -2,6 +2,7 @@
 #include "component.h"
 #include <memory>
 #include "transform.h"
+#include <string>
 
 
 namespace snowball
@@ -22,6 +23,18 @@ namespace snowball
 			components.push_back(rtn);
 
 			rtn->onInitialize();
+
+			return rtn;
+		}
+
+		template <typename T>
+		std::shared_ptr<T> addComponent(const std::string& _path)
+		{
+			std::shared_ptr<T> rtn = std::make_shared<T>();
+			rtn->entity = self;
+			components.push_back(rtn);
+
+			rtn->onInitialize(_path);
 
 			return rtn;
 		}
