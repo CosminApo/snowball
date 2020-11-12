@@ -41,11 +41,12 @@ namespace snowball
 		shape->add(glm::vec3(0.5f, -0.5f, -10.5f));
 
 		//just to test mats
-		float angle(1.0f);
-		getEntity()->getComponent<Transform>()->setRotationAngle(&angle);
+		glm::vec3 yes(1.f, 0.f, 0.f);
+		getEntity()->getComponent<Transform>()->setRotation(&yes);
 	}
 	void Renderer::onRender()
 	{
+		
 		shader->setUniform("in_Model", getEntity()->getComponent<Transform>()->getModelMat());
 		shader->setUniform("in_Projection",	getEntity()->getCore()->getScreen()->getProjMat());
 		shader->setAttribute("a_Position", shape);

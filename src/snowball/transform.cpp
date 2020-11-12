@@ -6,17 +6,21 @@ namespace snowball
     {  
         //model = translation*rotation*scale
         model = glm::translate(model, position); 
-        model = glm::rotate(model, glm::radians(rotationAngle), rotationAxis);
+
+
+        model = glm::rotate(model, rotation.x, glm::vec3(1.0f, 0.f, 0.f));
+        model = glm::rotate(model, rotation.y, glm::vec3(0.0f, 1.f, 0.f));
+        model = glm::rotate(model, rotation.z, glm::vec3(0.0f, 0.f, 1.f));
+
         model = glm::scale(model, scale);
         return model;
     }
     void Transform::onInitialize()
     {
         position = glm::vec3(0);
-        rotationAngle = 0.f;
-        rotationAxis = glm::vec3(0.0f, 1.0f, 0.f); //rotate around y by default
         scale = glm::vec3(1.f);
         model = glm::mat4(1.0f);
+        rotation = glm::vec3(1.f);
     }
 
     void Transform::setPosition(glm::vec3* _position)
@@ -24,14 +28,15 @@ namespace snowball
         position = *_position;
     }
 
-    void Transform::setRotationAngle(float* _rotationAngle)
-    {
-        rotationAngle = *_rotationAngle;
-    }
 
     void Transform::setScale(glm::vec3* _scale)
     {
         scale = *_scale;
+    }
+
+    void Transform::setRotation(glm::vec3* _rotation)
+    {
+        rotation = *_rotation;
     }
 
 }

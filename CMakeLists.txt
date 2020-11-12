@@ -47,33 +47,33 @@ endif()
 
 # .h files included to show in VS
 add_library(snowball 
-	src/snowball/core.cpp
-	src/snowball/entity.cpp
-	src/snowball/component.cpp
-    src/snowball/renderer.cpp
-	src/snowball/transform.cpp
-	src/snowball/screen.cpp
-	src/snowball/resource.cpp
-	src/snowball/resourceManager.cpp
-	src/snowball/sound.cpp
-    src/snowball/soundSource.cpp
-	src/snowball/texture.cpp
-	src/snowball/keyboard.cpp
+	src/snowball/Core.cpp
+	src/snowball/Entity.cpp
+	src/snowball/Component.cpp
+    src/snowball/Renderer.cpp
+	src/snowball/Transform.cpp
+	src/snowball/Screen.cpp
+	src/snowball/Resource.cpp
+	src/snowball/ResourceManager.cpp
+	src/snowball/Sound.cpp
+    src/snowball/SoundSource.cpp
+	src/snowball/Texture.cpp
+	src/snowball/Keyboard.cpp
 
 
-    src/snowball/core.h
-    src/snowball/entity.h
-	src/snowball/component.h
-    src/snowball/renderer.h
-	src/snowball/snowball.h
-	src/snowball/transform.h
-	src/snowball/screen.h
-	src/snowball/resource.h
-	src/snowball/resourceManager.h
-	src/snowball/sound.h
-	src/snowball/texture.h
-    src/snowball/soundSource.h
-	src/snowball/keyboard.h
+    src/snowball/Core.h
+    src/snowball/Entity.h
+	src/snowball/Component.h
+    src/snowball/Renderer.h
+	src/snowball/Snowball.h
+	src/snowball/Transform.h
+	src/snowball/Screen.h
+	src/snowball/Resource.h
+	src/snowball/ResourceManager.h
+	src/snowball/Sound.h
+	src/snowball/Texture.h
+    src/snowball/SoundSource.h
+	src/snowball/Keyboard.h
 
 )
 

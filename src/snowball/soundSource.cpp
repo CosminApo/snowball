@@ -9,11 +9,6 @@ namespace snowball
 	void SoundSource::onInitialize(const std::string _path)
 	{
 		std::shared_ptr<Sound> sound = getEntity()->getCore()->getRm()->load<Sound>(_path);
-
-		//std::shared_ptr<Sound> sound = std::make_shared<Sound>();
-
-
-
 		alGenSources(1, &sid);
 		std::cout << sid;
 		alSourcei(sid, AL_BUFFER, sound->getID());

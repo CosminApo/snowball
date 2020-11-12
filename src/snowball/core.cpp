@@ -10,6 +10,7 @@ namespace snowball
 		rtn->self = rtn;
 		rtn->sc = std::make_shared<Screen>();
 		rtn->rm = std::make_shared<ResourceManager>();
+		rtn->kb = std::make_shared<Keyboard>();
 		rtn->window = SDL_CreateWindow("Snowball", //title
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, //pos
 			rtn->sc->getWindow_Height(), rtn->sc->getWindow_Width(),  //scale
@@ -70,6 +71,10 @@ namespace snowball
 	{
 		return self.lock()->rm;
 	}
+	std::shared_ptr<Keyboard> Core::getKeyboard()
+	{
+		return self.lock()->kb;
+	}
 	void Core::start()
 	{		
 		bool running = true;
@@ -81,6 +86,14 @@ namespace snowball
 				if (e.type == SDL_QUIT)
 				{
 					running = false;
+				}
+				else if (e.type == SDL_KEYDOWN)
+				{
+					kb->keys.push_back(e.key.keysym.sym);
+				}
+				else if (e.type == SDL_KEYUP)
+				{
+					kb->deleteKey(e.key.keysym.sym);
 				}
 			}
 			for (size_t ei = 0; ei < entities.size(); ei++)

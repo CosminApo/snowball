@@ -6,6 +6,7 @@
 #include <AL/al.h>
 #include <AL/alc.h>
 #include "resourceManager.h"
+#include "keyboard.h"
 
 namespace snowball
 {
@@ -22,6 +23,7 @@ namespace snowball
 		std::shared_ptr<Entity> addEntity();
 		std::shared_ptr<Screen> getScreen();
 		std::shared_ptr<ResourceManager> getRm();
+		std::shared_ptr<Keyboard> getKeyboard();
 		void start();
 	private:
 		/*SDL related*/
@@ -36,7 +38,7 @@ namespace snowball
 
 		/////
 
-
+		std::shared_ptr<Keyboard> kb;
 		std::shared_ptr<ResourceManager> rm;
 		std::weak_ptr<Core> self; 
 		std::shared_ptr<rend::Context> context; //TODO inside contexts destructor, delete window and glContext
