@@ -53,8 +53,9 @@ namespace snowball
 				}
 			}
 			//add exception
+			abort();
 		}
-
+		
 		void tick();
 		void render();
 		

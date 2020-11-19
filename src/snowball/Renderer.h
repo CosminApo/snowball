@@ -12,6 +12,7 @@ namespace snowball
 
 	private:
 		std::shared_ptr<rend::Shader> shader;
-		std::shared_ptr<rend::Buffer> shape;
+		std::shared_ptr<rend::Mesh> shape; //TBA add resource type with mesh inside
+
 	};
 }

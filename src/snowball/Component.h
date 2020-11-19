@@ -9,6 +9,11 @@ namespace snowball
     struct Entity;
     struct Core;
 
+    /** 
+    * \brief Provides the base class for the components.
+    * More details
+    */
+
     struct Component
     {
         friend struct snowball::Entity;
@@ -24,7 +29,7 @@ namespace snowball
         std::shared_ptr<Core> getCore();
 
     private:
-        std::weak_ptr<Entity> entity;
+        std::weak_ptr<Entity> entity; ///< KEKW
     };
 
 }
