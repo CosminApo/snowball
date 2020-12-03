@@ -9,9 +9,11 @@ namespace snowball
 	{
 		glm::mat4 getModelMat();
 		void onInitialize();
-		void setPosition(glm::vec3* _position);
-		void setScale(glm::vec3* _scale);
-		void setRotation(glm::vec3* _rotation);
+		void setPosition(glm::vec3 _position);
+		void setScale(glm::vec3 _scale);
+		void setRotation(glm::vec3 _rotation);
+		void translate(glm::vec3 _translation);
+		void rotate(glm::vec3 _rotation);
 	private:
 		//model = translation*rotation*scale
 		glm::mat4 model;

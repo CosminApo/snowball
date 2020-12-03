@@ -2,12 +2,34 @@
 
 namespace snowball
 {
+	//maybe refractor this three with some macro / enum
 	bool Keyboard::getKey(int key)
 	{
-
 		for (size_t ki = 0; ki < keys.size(); ki++)
 		{
 			if (keys.at(ki) == key)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	bool Keyboard::getUpKey(int key)
+	{
+		for (size_t ki = 0; ki < upKeys.size(); ki++)
+		{
+			if (upKeys.at(ki) == key)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+	bool Keyboard::getDownKey(int key)
+	{
+		for (size_t ki = 0; ki < downKeys.size(); ki++)
+		{
+			if (downKeys.at(ki) == key)
 			{
 				return true;
 			}

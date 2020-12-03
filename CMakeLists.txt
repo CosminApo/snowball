@@ -59,6 +59,8 @@ add_library(snowball
     src/snowball/SoundSource.cpp
 	src/snowball/Texture.cpp
 	src/snowball/Keyboard.cpp
+	src/snowball/Exception.cpp
+    src/snowball/Camera.cpp
 
 
     src/snowball/Core.h
@@ -73,7 +75,9 @@ add_library(snowball
 	src/snowball/Sound.h
 	src/snowball/Texture.h
     src/snowball/SoundSource.h
+    src/snowball/Camera.h
 	src/snowball/Keyboard.h
+	src/snowball/Exception.h
 
 )
 

@@ -13,19 +13,20 @@ namespace snowball
 		std::cout << sid;
 		alSourcei(sid, AL_BUFFER, sound->getID());
 		std::cout << sound->getID();
-		alSourcePlay(sid);
 
 	}
 	void SoundSource::onTick()
 	{
+
+	
+	}
+	void SoundSource::playSound()
+	{
 		ALint state = 0;
 		alGetSourcei(sid, AL_SOURCE_STATE, &state);
-	
-
-	/*	if (state == !AL_PLAYING)
-		{*/
-		
-
-		/*}*/
+		if (!(state == AL_PLAYING))
+		{		
+			alSourcePlay(sid);
+		}
 	}
 }

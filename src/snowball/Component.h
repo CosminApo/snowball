@@ -8,10 +8,11 @@ namespace snowball
 
     struct Entity;
     struct Core;
-
+    struct Transform;
     /** 
     * \brief Provides the base class for the components.
-    * More details
+    * 
+    * 
     */
 
     struct Component
@@ -27,11 +28,12 @@ namespace snowball
 
         std::shared_ptr<Entity> getEntity();
         std::shared_ptr<Core> getCore();
+        std::shared_ptr<Transform> getTransform();
 
     private:
         std::weak_ptr<Entity> entity; ///< KEKW
     };
-
+    
 }
 //resource manager swap t to be resource and rs load can work
 #endif

@@ -7,6 +7,7 @@
 #include <AL/alc.h>
 #include "resourceManager.h"
 #include "keyboard.h"
+#include "Exception.h"
 
 namespace snowball
 {
@@ -14,7 +15,16 @@ namespace snowball
 	struct Entity;
 	struct Renderer;
 	struct Transform;
+	struct Camera;
 
+
+/**
+* \brief The core of the engine.
+* 
+* This is the class that contains references to all the parts
+* needed to get the engine working, such as a renderer, keyboard manager etc.
+* It also handles the main execution loop.
+*/
 
 	struct Core
 	{
@@ -24,8 +34,12 @@ namespace snowball
 		std::shared_ptr<Screen> getScreen();
 		std::shared_ptr<ResourceManager> getRm();
 		std::shared_ptr<Keyboard> getKeyboard();
+		std::shared_ptr<Camera> getCamera();
 		void start();
 	private:
+
+		friend struct snowball::Camera;
+
 		/*SDL related*/
 		SDL_Window* window;
 		SDL_GLContext glContext;
@@ -37,7 +51,8 @@ namespace snowball
 		ALCcontext* alContext;
 
 		/////
-
+		std::vector<std::weak_ptr<Camera>> cameras;
+		std::weak_ptr<Camera> currentCam;
 		std::shared_ptr<Keyboard> kb;
 		std::shared_ptr<ResourceManager> rm;
 		std::weak_ptr<Core> self; 

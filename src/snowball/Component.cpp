@@ -27,4 +27,8 @@ namespace snowball
 	{
 		return getEntity()->getCore();
 	}
+	std::shared_ptr<Transform> Component::getTransform()
+	{
+		return getEntity()->getComponent<Transform>();
+	}
 }

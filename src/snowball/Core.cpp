@@ -18,14 +18,14 @@ namespace snowball
 
 		if (!rtn->window)
 		{
-			throw rend::Exception("Failed to create window");
+			throw snowball::Exception("Failed to create window");
 		}
 
 		rtn->glContext = SDL_GL_CreateContext(rtn->window);
 
 		if (!rtn->glContext)
 		{
-			throw rend::Exception("Failed to create OpenGL context");
+			throw snowball::Exception("Failed to create OpenGL context");
 		}
 
 		rtn->context = rend::Context::initialize();
@@ -34,20 +34,20 @@ namespace snowball
 		rtn->device = alcOpenDevice(NULL);
 		if (!rtn->device)
 		{
-	  		throw rend::Exception("Failed to open default sound device");
+	  		throw snowball::Exception("Failed to open default sound device");
 		}
 		
 		rtn->alContext = alcCreateContext(rtn->device, NULL);
 		if (!rtn->alContext)
 		{
 			alcCloseDevice(rtn->device);
-			throw rend::Exception("Failed to create sound context");
+			throw snowball::Exception("Failed to create sound context");
 		}
 		if (!alcMakeContextCurrent(rtn->alContext))
 		{
 			alcDestroyContext(rtn->alContext);
 			alcCloseDevice(rtn->device);
-			throw rend::Exception("Failed to make context current");
+			throw snowball::Exception("Failed to make context current");
 		}
 
 		//todo close this at the end
@@ -75,6 +75,11 @@ namespace snowball
 	{
 		return self.lock()->kb;
 	}
+	std::shared_ptr<Camera> Core::getCamera()
+	{
+
+		return currentCam.lock();
+	}
 	void Core::start()
 	{		
 		bool running = true;
@@ -90,10 +95,12 @@ namespace snowball
 				else if (e.type == SDL_KEYDOWN)
 				{
 					kb->keys.push_back(e.key.keysym.sym);
+					kb->downKeys.push_back(e.key.keysym.sym);
 				}
 				else if (e.type == SDL_KEYUP)
 				{
 					kb->deleteKey(e.key.keysym.sym);
+					kb->upKeys.push_back(e.key.keysym.sym);
 				}
 			}
 			for (size_t ei = 0; ei < entities.size(); ei++)
@@ -102,13 +109,29 @@ namespace snowball
 			}
 
 			glClearColor(0.3f, 0.4f, 0.8f, 1.0f);
-			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-			for (size_t ei = 0; ei < entities.size(); ei++)
+			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //for future camera tech, clear screen after activating render buffer
+			glViewport(0,0, sc->getWindow_Width(),sc->getWindow_Height());
+			for (size_t ci = 0; ci < cameras.size(); ci++) //tbc iterator
 			{
-				entities.at(ei)->render();
+				currentCam = cameras.at(ci);
+				glClear(GL_DEPTH_BUFFER_BIT); //for future camera tech, clear screen after activating render buffer
+
+				for (size_t ei = 0; ei < entities.size(); ei++)
+				{
+					entities.at(ei)->render();
+				}
+				glViewport(0, 0, 200, 200);
+
 			}
 
+		
+
 			SDL_GL_SwapWindow(window);
+
+			//Clean keyboard at end of frame
+			kb->downKeys.clear();
+			kb->upKeys.clear();
+
 		}
 	}
 }

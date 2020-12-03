@@ -13,6 +13,7 @@ namespace snowball
 	
 		void onInitialize(const std::string _path);
 		void onTick();
+		void playSound();
 	private:
 		ALuint sid;
 		std::weak_ptr<Sound> sound;
