@@ -63,6 +63,7 @@ add_library(snowball
     src/snowball/Camera.cpp
     src/snowball/Model.cpp
     src/snowball/Shader.cpp
+    src/snowball/Player.cpp
 
 
     src/snowball/Core.h
@@ -82,6 +83,7 @@ add_library(snowball
 	src/snowball/Exception.h
     src/snowball/Model.h
     src/snowball/Shader.h
+    src/snowball/Player.h
 
 
 )

@@ -41,6 +41,8 @@ namespace snowball
 		std::shared_ptr<ResourceManager> getRm();
 		std::shared_ptr<Keyboard> getKeyboard();
 		std::shared_ptr<Camera> getCamera();
+		std::shared_ptr<Camera> getSCamera();
+		void setMainCamera(std::shared_ptr<Camera> _cam);
 		void start();
 	private:
 

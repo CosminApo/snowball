@@ -79,8 +79,15 @@ namespace snowball
 	}
 	std::shared_ptr<Camera> Core::getCamera()
 	{
-
 		return currentCam.lock();
+	}
+	std::shared_ptr<Camera> Core::getSCamera()
+	{
+		return cameras.at(0).lock();
+	}
+	void Core::setMainCamera(std::shared_ptr<Camera> _cam)
+	{
+		currentCam = _cam;
 	}
 	void Core::start()
 	{		

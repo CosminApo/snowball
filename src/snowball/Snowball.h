@@ -7,7 +7,7 @@
 #include "renderer.h"
 #include "soundSource.h"
 #include "Camera.h"
-
+#include "Player.h"
 
 using namespace snowball;
 

@@ -14,6 +14,10 @@ namespace snowball
         model = glm::scale(model, scale);
         return model;
     }
+    glm::vec3 Transform::getPosition()
+    {
+        return position;
+    }
     void Transform::onInitialize()
     {
         scale = glm::vec3(1, 1, 1);

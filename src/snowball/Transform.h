@@ -7,13 +7,20 @@ namespace snowball
 {
 	struct Transform : public Component
 	{
-		glm::mat4 getModelMat();
+
 		void onInitialize();
+
+		void translate(glm::vec3 _translation);
+		void rotate(glm::vec3 _rotation);
+
+
+		glm::mat4 getModelMat();
+		glm::vec3 getPosition();
+
+
 		void setPosition(glm::vec3 _position);
 		void setScale(glm::vec3 _scale);
 		void setRotation(glm::vec3 _rotation);
-		void translate(glm::vec3 _translation);
-		void rotate(glm::vec3 _rotation);
 	private:
 		//model = translation*rotation*scale
 		glm::mat4 model;
