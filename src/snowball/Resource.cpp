@@ -15,4 +15,12 @@ namespace snowball
 	{
 		return path;
 	}
+	void Resource::setRm(std::shared_ptr<ResourceManager> _rm)
+	{
+		rm = _rm;
+	}
+	std::shared_ptr<ResourceManager> Resource::getRm()
+	{
+		return rm.lock();
+	}
 }

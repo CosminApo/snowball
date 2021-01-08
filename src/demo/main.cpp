@@ -9,6 +9,7 @@ struct Player : Component
         std::shared_ptr<Renderer> pc = getEntity()->addComponent<Renderer>();
         std::shared_ptr<SoundSource> sc = getEntity()->addComponent<SoundSource>("Jump3");
         getTransform()->setPosition(glm::vec3(0, 0, -10.f));
+        sc->playSound();
     }  
     void onTick()
     {
@@ -60,7 +61,10 @@ int main()
     std::shared_ptr<Core> core = Core::initialize();	
     std::shared_ptr<Entity> pe = core->addEntity(); 
     std::shared_ptr<Player> pc = pe->addComponent<Player>();
-  //  pe->addComponent<Controller>();
+    pc->getEntity()->getComponent<Renderer>()->setShader("shader.glsl");
+    pc->getEntity()->getComponent<Renderer>()->setModel("../curuthers/curuthers.obj");
+    pc->getEntity()->getComponent<Renderer>()->setTexture("../curuthers/Whiskers_diffuse.png");
+  //pe->addComponent<Controller>();
 
     std::shared_ptr<Entity> camera = core->addEntity();
     camera->addComponent<Camera>();

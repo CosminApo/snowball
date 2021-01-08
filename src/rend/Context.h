@@ -1,4 +1,5 @@
 #include <memory>
+#include <string>
 
 namespace rend
 {
@@ -14,6 +15,7 @@ struct Context
   static std::shared_ptr<Context> initialize();
 
   std::shared_ptr<Texture> createTexture();
+  std::shared_ptr<Texture> createTexture(std::string _path);
   std::shared_ptr<Shader> createShader();
   std::shared_ptr<Buffer> createBuffer();
   std::shared_ptr<Mesh> createMesh();

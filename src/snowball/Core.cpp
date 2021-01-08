@@ -10,6 +10,8 @@ namespace snowball
 		rtn->self = rtn;
 		rtn->sc = std::make_shared<Screen>();
 		rtn->rm = std::make_shared<ResourceManager>();
+		rtn->rm->setSelf(rtn->rm);
+		rtn->rm->setCore(rtn);
 		rtn->kb = std::make_shared<Keyboard>();
 		rtn->window = SDL_CreateWindow("Snowball", //title
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, //pos
@@ -134,5 +136,6 @@ namespace snowball
 
 		}
 	}
+
 }
 

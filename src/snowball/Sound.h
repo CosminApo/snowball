@@ -2,7 +2,6 @@
 #include <AL/al.h>
 
 
-
 namespace snowball
 {
 	struct Sound : public Resource

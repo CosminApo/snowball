@@ -1,6 +1,10 @@
 #include "Texture.h"
 #include "Context.h"
 #include "Exception.h"
+// Needs to be defined before the include in exactly one comp unit
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
+
 
 namespace rend
 {
@@ -13,6 +17,55 @@ Texture::~Texture()
   glDeleteTextures(1, &delId);
   pollForError();
 }
+
+Texture::Texture(const std::string _path)
+{
+
+    unsigned char* data = {}; //where the data loaded is stored
+    int width = 0; //the width of the image
+    int heigth = 0; //the height of the image
+
+    if (_path != "")    //if there is a path
+    {
+        data = stbi_load(       //load the file
+            (_path).c_str(),    //at this path
+            &width,             //store the width
+            &heigth,            //store the height
+            NULL,               //dont force format
+            4                   //RGBA, 4 channels
+        );
+        if (data == NULL) //error check
+        {
+            throw Exception("Texture could not be loaded");
+        }
+    }
+
+    
+    glGenTextures(1, &id); //create an opengl texture and store id
+    if (!id) //error check
+    {
+        throw Exception("Texture could not be created");
+    }
+
+    ////glActiveTexture(GL_TEXTURE0 + 1); multitexture
+    glBindTexture(GL_TEXTURE_2D, id);
+
+    //upload the image data to the bound texture unit in the gpu
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, heigth, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
+
+    //free the loaded data cause its now on the gpu
+    free(data);
+
+    //generate mipmap
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+
+    size = ivec2(width, heigth);
+    dirty = false;
+}
+
+
+
 
 GLuint Texture::getTexId()
 {
@@ -64,7 +117,7 @@ int Texture::getHeight() const
 
 void Texture::setSize(unsigned int width, unsigned int height)
 {
-  dirty = true;
+  dirty = false;
   size = ivec2(width, height);
   data.resize(width * height);
 }
@@ -77,7 +130,7 @@ void Texture::setPixel(unsigned int x, unsigned int y, vec3 rgb)
 
 void Texture::setPixel(unsigned int x, unsigned int y, vec4 rgba)
 {
-  dirty = true;
+  dirty = false;
   bpp = 4;
   data.at(size.x * (size.y - 1 - y) + x) = rgba;
 }

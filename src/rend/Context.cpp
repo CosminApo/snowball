@@ -59,6 +59,16 @@ std::shared_ptr<Texture> Context::createTexture()
   return rtn;
 }
 
+std::shared_ptr<Texture> Context::createTexture(std::string _path)
+{
+    GLuint id = 0;
+    std::shared_ptr<Texture> rtn = std::make_shared<Texture>(_path);
+    rtn->context = self.lock();
+
+
+    return rtn;
+}
+
 std::shared_ptr<RenderTexture> Context::createRenderTexture()
 {
   GLuint id = 0;

@@ -35,9 +35,9 @@ namespace snowball
 		{
 			format = AL_FORMAT_MONO16;
 		}
-		if (channels == 1)
+		else
 		{
-			format = AL_FORMAT_MONO16;
+			format = AL_FORMAT_STEREO16;
 		}
 
 		freq = sampleRate;

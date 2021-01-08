@@ -16,7 +16,9 @@ namespace snowball
 	struct Renderer;
 	struct Transform;
 	struct Camera;
-
+	struct Model;
+	struct Shader;
+	struct Texture;
 
 /**
 * \brief The core of the engine.
@@ -29,6 +31,10 @@ namespace snowball
 	struct Core
 	{
 		friend struct ::snowball::Renderer;
+		friend struct ::snowball::Model;
+		friend struct ::snowball::Shader;
+		friend struct ::snowball::Texture;
+
 		static std::shared_ptr<Core> initialize(); //static to initialize without object
 		std::shared_ptr<Entity> addEntity();
 		std::shared_ptr<Screen> getScreen();

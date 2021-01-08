@@ -4,6 +4,7 @@
 #include "Context.h"
 #include "Buffer.h"
 #include "Exception.h"
+#include <iostream>
 
 namespace rend
 {
@@ -48,6 +49,7 @@ void Mesh::setBuffer(const std::string& name, const std::shared_ptr<Buffer>& buf
 
 void Mesh::setTexture(const std::string& name, const std::shared_ptr<TextureAdapter>& texture)
 {
+    //if texture exists then get it
   for(std::vector<std::shared_ptr<TextureData> >::iterator it =
     textures.begin(); it != textures.end(); it++)
   {
@@ -59,10 +61,12 @@ void Mesh::setTexture(const std::string& name, const std::shared_ptr<TextureAdap
     }
   }
 
+  //else make a new one
   std::shared_ptr<TextureData> td = std::make_shared<TextureData>();
   td->name = name;
   td->texture = texture;
   textures.push_back(td);
+
 }
 
 void Mesh::parse(const std::string& data)
@@ -90,6 +94,7 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
   std::vector<vec2> lmcs;
   std::vector<Face> faces;
 
+
   for(std::vector<std::string>::iterator lit = lines.begin();
     lit != lines.end(); lit++)
   {
@@ -112,7 +117,7 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
     else if(tokens.at(0) == "vt")
     {
       vec2 tc(atof(tokens.at(1).c_str()),
-        atof(tokens.at(2).c_str()));
+         1.0f -  atof(tokens.at(2).c_str()));
 
       tcs.push_back(tc);
     }

@@ -5,12 +5,12 @@
 
 namespace snowball
 {
-	struct Texture : public Resource
+	struct Model : public Resource
 	{
 		void onLoad(const std::string _path);
-		std::shared_ptr<rend::Texture> getTexture();
+		std::shared_ptr<rend::Mesh> getModel();
 
 	private:
-		std::shared_ptr<rend::Texture> tex;
+		std::shared_ptr<rend::Mesh> model; 
 	};
 }

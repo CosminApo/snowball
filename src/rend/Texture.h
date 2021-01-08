@@ -2,7 +2,7 @@
 #include "TextureAdapter.h"
 
 #include <GL/glew.h>
-
+#include <string>
 #include <memory>
 #include <vector>
 
@@ -15,6 +15,9 @@ struct Texture : public TextureAdapter
 {
   Texture();
   ~Texture();
+  Texture(const std::string _path);
+
+
 
   void setSize(unsigned int width, unsigned int height);
   void setPixel(unsigned int x, unsigned int y, vec3 rgb);
@@ -39,6 +42,7 @@ private:
   int bpp = 0;
 
   Texture(const Texture&);
+
   Texture& operator=(const Texture&);
 
 };

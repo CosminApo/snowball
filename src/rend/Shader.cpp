@@ -6,7 +6,7 @@
 #include "RenderTexture.h"
 #include "TextureAdapter.h"
 #include "Mesh.h"
-
+#include <iostream>
 #include <vector>
 
 #include <array>
@@ -118,6 +118,7 @@ void Shader::render()
         glActiveTexture(GL_TEXTURE0 + activeTexture); pollForError();
         glBindTexture(GL_TEXTURE_2D, (*it)->textureVal->getTexId()); pollForError();
         glUniform1i((*it)->loc, activeTexture); pollForError();
+
         activeTexture++;
       }
       else if((*it)->type == GL_FLOAT)
