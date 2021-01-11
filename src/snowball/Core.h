@@ -19,7 +19,8 @@ namespace snowball
 	struct Model;
 	struct Shader;
 	struct Texture;
-
+	struct RenderTexture;
+	struct UIElement;
 /**
 * \brief The core of the engine.
 * 
@@ -34,6 +35,8 @@ namespace snowball
 		friend struct ::snowball::Model;
 		friend struct ::snowball::Shader;
 		friend struct ::snowball::Texture;
+		friend struct ::snowball::RenderTexture;
+		friend struct ::snowball::UIElement;
 
 		static std::shared_ptr<Core> initialize(); //static to initialize without object
 		std::shared_ptr<Entity> addEntity();

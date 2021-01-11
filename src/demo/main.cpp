@@ -7,6 +7,7 @@ struct Controller : public Component
 {
     void onTick()
     {
+
         if (getEntity()->getCore()->getKeyboard()->getKey(SDLK_a))
         {
             getTransform()->translate(glm::vec3(-0.1f, 0, 0));
@@ -50,6 +51,7 @@ int main()
 
     std::shared_ptr<Entity> camera2 = core->addEntity();
     camera2->addComponent<Camera>();
+    camera2->getComponent<Camera>()->addRenderTexture("../curuthers/Whiskers_diffuse.png");
 
     std::shared_ptr<Player> pc = pe->addComponent<Player>();
     pc->getEntity()->getComponent<Renderer>()->setShader("shader.glsl");
@@ -58,9 +60,15 @@ int main()
   //pe->addComponent<Controller>();
     pc->getEntity()->getComponent<SoundSource>()->setListener(camera->getComponent<Camera>());
 
+    std::shared_ptr<Entity> ui = core->addEntity();
+    ui->addComponent<Renderer>();
+    ui->getComponent<Renderer>()->setShader("shader.glsl");
+    ui->addComponent<UIElement>(camera2->getComponent<Camera>()->getRenderTexture(),"../curuthers/Whiskers_diffuse.png",100,100,0,0);
 
-
-
+    std::shared_ptr<Entity> uis = core->addEntity();
+    uis->addComponent<Renderer>();
+    uis->getComponent<Renderer>()->setShader("shader.glsl");
+    uis->addComponent<UIElement>(camera2->getComponent<Camera>()->getRenderTexture(), "../curuthers/Whiskers_diffuse.png", 100, 100, 500,0);
     core->start();
     
 

@@ -5,6 +5,7 @@
 #include "Model.h"
 #include "Shader.h"
 #include "Texture.h"
+#include "UIElement.h"
 
 namespace snowball
 {
@@ -15,11 +16,39 @@ namespace snowball
 
 	void Renderer::onRender()
 	{
-		shader->setMesh(shape);	
-		shader->setUniform("u_View", getEntity()->getCore()->getCamera()->getView());
-		shader->setUniform("u_Model", getEntity()->getComponent<Transform>()->getModelMat());
-		shader->setUniform("u_Projection",	getEntity()->getCore()->getScreen()->getProjMat());
-		shader->render();
+
+
+		if (getEntity()->getComponent<UIElement>()) //if its an UI object then render it as such
+		{
+			std::shared_ptr<UIElement> UIobj = getEntity()->getComponent<UIElement>();
+			std::shared_ptr<Camera> cam = getCore()->getCamera();
+			if (cam->getRenderTexture())
+			{
+				if (cam->getRenderTexture() == UIobj->getRenderTexture())
+				{
+					shader->setMesh(shape);
+					shader->setUniform("u_View", getEntity()->getCore()->getCamera()->getView());
+					shader->setUniform("u_Model", getEntity()->getComponent<Transform>()->getModelMat());
+					shader->setUniform("u_Projection", getEntity()->getCore()->getScreen()->getOrthoMat());
+					shader->render(cam->getRenderTexture());
+					std::cout << "Rendering ui element" << std::endl;
+				}
+			
+			}
+		}
+		else //normal rendering for 3D models
+		{
+			shader->setMesh(shape);
+			shader->setUniform("u_View", getEntity()->getCore()->getCamera()->getView());
+			shader->setUniform("u_Model", getEntity()->getComponent<Transform>()->getModelMat());
+			shader->setUniform("u_Projection", getEntity()->getCore()->getScreen()->getProjMat());
+			std::shared_ptr<Camera> cam = getCore()->getCamera();
+			shader->render();
+
+
+		}
+
+
 
 	}
 

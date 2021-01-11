@@ -51,6 +51,7 @@ namespace snowball
 					return rtn;
 				}
 			}
+			return NULL;
 			//add exception
 			abort();
 		}

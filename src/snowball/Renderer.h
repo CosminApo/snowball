@@ -6,8 +6,11 @@
 
 namespace snowball
 {
+	struct UIElement;
 	struct Renderer : public Component
 	{
+		friend struct ::snowball::UIElement;
+
 		void onInitialize();
 		void onRender();
 		void setModel(std::string _path);

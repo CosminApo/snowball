@@ -21,4 +21,16 @@ namespace snowball
 		);
 		return proj;
 	}
+	glm::mat4 Screen::getOrthoMat()
+	{
+		proj = glm::ortho(
+			0.0f,
+			(float)(window_width),
+			0.0f,
+			(float)(window_height),
+			-100.1f,
+			100.f
+		);
+		return proj;
+	}
 }

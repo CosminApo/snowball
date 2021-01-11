@@ -21,6 +21,7 @@ namespace snowball
     void Transform::onInitialize()
     {
         scale = glm::vec3(1, 1, 1);
+        position = glm::vec3(0,0,0);
  
     }
    

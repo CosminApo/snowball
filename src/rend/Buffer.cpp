@@ -24,6 +24,11 @@ int Buffer::getSize()
   else throw Exception("TODO: Support other types of data");
 }
 
+void Buffer::setId(GLuint _id)
+{
+    id = _id;
+}
+
 void Buffer::add(float value)
 {
   if(type != 0 && type != GL_FLOAT)

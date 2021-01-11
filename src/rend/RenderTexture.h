@@ -2,7 +2,7 @@
 #include "TextureAdapter.h"
 
 #include <GL/glew.h>
-
+#include <string>
 #include <memory>
 #include <vector>
 
@@ -16,6 +16,7 @@ struct RenderTexture : public TextureAdapter
 {
   RenderTexture();
   ~RenderTexture();
+  RenderTexture(const std::string _path);
 
   void setSize(unsigned int width, unsigned int height);
 

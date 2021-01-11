@@ -129,7 +129,7 @@ namespace snowball
 				{
 					entities.at(ei)->render();
 				}
-				glViewport(0, 0, 200, 200);
+				//glViewport(0, 0, 200, 200);
 
 			}
 

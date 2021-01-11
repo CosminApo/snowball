@@ -22,6 +22,11 @@ RenderTexture::~RenderTexture()
   pollForError();
 }
 
+RenderTexture::RenderTexture(const std::string _path)
+{
+
+}
+
 GLuint RenderTexture::getTexId()
 {
   return id;

@@ -12,7 +12,7 @@ namespace snowball
 	{		
 		std::shared_ptr<Sound> sound = getEntity()->getCore()->getRm()->load<Sound>(_path);
 		alGenSources(1, &sid);
-		std::cout << sid;
+
 		alSourcei(sid, AL_BUFFER, sound->getID());
 		alSourcef(sid, AL_GAIN, 1);
 		alDistanceModel(AL_INVERSE_DISTANCE_CLAMPED);
@@ -29,7 +29,7 @@ namespace snowball
 			glm::vec3 listenerPos = listener->getTransform()->getPosition();
 			alListener3f(AL_POSITION, listenerPos.x, listenerPos.y, listenerPos.z);
 			alSource3f(sid, AL_POSITION, entityPos.x, entityPos.y, entityPos.z);
-			std::cout << listenerPos.x;
+
 		}
 	
 	}

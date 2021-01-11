@@ -77,7 +77,7 @@ void Shader::render(const std::shared_ptr<RenderTexture>& target)
 
   glViewport(viewport.at(0), viewport.at(1), viewport.at(2), viewport.at(3));
 
-  //render();
+  render();
 }
 
 void Shader::render()

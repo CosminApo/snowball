@@ -6,8 +6,8 @@ include_directories(
 )
 
 if (MSVC)
- include_directories(${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86_64/include)
- link_directories( ${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86_64/lib)
+  include_directories(${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86_64/include)
+  link_directories( ${PROJECT_SOURCE_DIR}/contrib/msvc-windows-x86_64/lib)
 endif()
 
 
@@ -50,26 +50,28 @@ add_library(snowball
 	src/snowball/Core.cpp
 	src/snowball/Entity.cpp
 	src/snowball/Component.cpp
-    src/snowball/Renderer.cpp
+  src/snowball/Renderer.cpp
 	src/snowball/Transform.cpp
 	src/snowball/Screen.cpp
 	src/snowball/Resource.cpp
 	src/snowball/ResourceManager.cpp
 	src/snowball/Sound.cpp
-    src/snowball/SoundSource.cpp
+  src/snowball/SoundSource.cpp
 	src/snowball/Texture.cpp
 	src/snowball/Keyboard.cpp
 	src/snowball/Exception.cpp
-    src/snowball/Camera.cpp
-    src/snowball/Model.cpp
-    src/snowball/Shader.cpp
-    src/snowball/Player.cpp
+  src/snowball/Camera.cpp
+  src/snowball/Model.cpp
+  src/snowball/Shader.cpp
+  src/snowball/Player.cpp
+  src/snowball/RenderTexture.cpp
+  src/snowball/UIElement.cpp
 
 
-    src/snowball/Core.h
-    src/snowball/Entity.h
+  src/snowball/Core.h
+  src/snowball/Entity.h
 	src/snowball/Component.h
-    src/snowball/Renderer.h
+  src/snowball/Renderer.h
 	src/snowball/Snowball.h
 	src/snowball/Transform.h
 	src/snowball/Screen.h
@@ -77,13 +79,15 @@ add_library(snowball
 	src/snowball/ResourceManager.h
 	src/snowball/Sound.h
 	src/snowball/Texture.h
-    src/snowball/SoundSource.h
-    src/snowball/Camera.h
+  src/snowball/SoundSource.h
+  src/snowball/Camera.h
 	src/snowball/Keyboard.h
 	src/snowball/Exception.h
-    src/snowball/Model.h
-    src/snowball/Shader.h
-    src/snowball/Player.h
+  src/snowball/Model.h
+  src/snowball/Shader.h
+  src/snowball/Player.h
+  src/snowball/RenderTexture.h
+  src/snowball/UIElement.h
 
 
 )
@@ -92,9 +96,3 @@ target_link_libraries(demo snowball)
 
 target_link_libraries(demo SDL2)
 target_link_libraries(snowball rend)
-
-
-
-
-
-

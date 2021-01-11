@@ -8,6 +8,7 @@
 #include "soundSource.h"
 #include "Camera.h"
 #include "Player.h"
+#include "UIElement.h"
 
 using namespace snowball;
 

@@ -10,6 +10,7 @@ namespace snowball
 		int getWindow_Height();
 		int getWindow_Width();
 		glm::mat4 getProjMat();
+		glm::mat4 getOrthoMat();
 	private:
 		//sdl window params
 		int window_width = 800; 

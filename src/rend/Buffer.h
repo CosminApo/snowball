@@ -23,6 +23,7 @@ struct Buffer
 
   GLuint getId();
   int getSize();
+  void setId(GLuint _id);
 
 private:
   friend struct Context;
