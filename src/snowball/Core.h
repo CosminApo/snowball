@@ -8,6 +8,7 @@
 #include "resourceManager.h"
 #include "keyboard.h"
 #include "Exception.h"
+#include "Mouse.h"
 
 namespace snowball
 {
@@ -47,6 +48,8 @@ namespace snowball
 		std::shared_ptr<Camera> getSCamera();
 		void setMainCamera(std::shared_ptr<Camera> _cam);
 		void start();
+		void checkButtonPressed();
+		void addButton(std::shared_ptr<UIElement> _btn);
 	private:
 
 		friend struct snowball::Camera;
@@ -69,5 +72,7 @@ namespace snowball
 		std::weak_ptr<Core> self; 
 		std::shared_ptr<rend::Context> context; //TODO inside contexts destructor, delete window and glContext
 		std::vector<std::shared_ptr<Entity>> entities;
+		std::shared_ptr<Mouse> mouse;
+		std::vector<std::shared_ptr<UIElement>> buttons;
 	};
 }

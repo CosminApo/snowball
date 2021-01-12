@@ -26,8 +26,8 @@ namespace snowball
 		proj = glm::ortho(
 			0.0f,
 			(float)(window_width),
-			0.0f,
 			(float)(window_height),
+			0.0f,
 			-100.1f,
 			100.f
 		);

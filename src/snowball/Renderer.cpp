@@ -31,7 +31,6 @@ namespace snowball
 					shader->setUniform("u_Model", getEntity()->getComponent<Transform>()->getModelMat());
 					shader->setUniform("u_Projection", getEntity()->getCore()->getScreen()->getOrthoMat());
 					shader->render(cam->getRenderTexture());
-					std::cout << "Rendering ui element" << std::endl;
 				}
 			
 			}

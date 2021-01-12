@@ -66,6 +66,7 @@ add_library(snowball
   src/snowball/Player.cpp
   src/snowball/RenderTexture.cpp
   src/snowball/UIElement.cpp
+  src/snowball/Mouse.cpp
 
 
   src/snowball/Core.h
@@ -88,6 +89,7 @@ add_library(snowball
   src/snowball/Player.h
   src/snowball/RenderTexture.h
   src/snowball/UIElement.h
+  src/snowball/Mouse.h
 
 
 )

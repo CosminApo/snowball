@@ -147,10 +147,10 @@ void Shader::render()
         vertices = size;
       }
 
-      if(vertices != size)
-      {
-        throw Exception("The specified attribute streams are of different sizes");
-      }
+      //if(vertices != size)
+      //{
+      //  throw Exception("The specified attribute streams are of different sizes");
+      //}
     }
   }
 

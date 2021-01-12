@@ -1,5 +1,6 @@
 #include "core.h"
 #include "entity.h"
+#include "UIElement.h"
 
 namespace snowball
 {
@@ -17,6 +18,7 @@ namespace snowball
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, //pos
 			rtn->sc->getWindow_Height(), rtn->sc->getWindow_Width(),  //scale
 			SDL_WINDOW_OPENGL | SDL_WINDOW_SHOWN| SDL_WINDOW_RESIZABLE); //flags
+		rtn->mouse = std::make_shared<Mouse>();
 
 		if (!rtn->window)
 		{
@@ -111,6 +113,14 @@ namespace snowball
 					kb->deleteKey(e.key.keysym.sym);
 					kb->upKeys.push_back(e.key.keysym.sym);
 				}
+				else if (e.type == SDL_MOUSEBUTTONDOWN)
+				{
+					int x, y;
+					SDL_GetMouseState(&x, &y);
+					mouse->setXpos(x);
+					mouse->setYpos(y);
+					checkButtonPressed();
+				}
 			}
 			for (size_t ei = 0; ei < entities.size(); ei++)
 			{
@@ -142,6 +152,27 @@ namespace snowball
 			kb->upKeys.clear();
 
 		}
+	}
+
+	void Core::checkButtonPressed()
+	{
+		int x = mouse->getXpos();
+		int y = mouse->getYpos();
+		for (std::vector<std::shared_ptr<UIElement>>::iterator btn = buttons.begin(); btn != buttons.end(); btn++)
+		{
+			if (x > (*btn)->getXpos() && x < (*btn)->getXpos() + (*btn)->getWidth()*2)
+			{
+				if (y > (*btn)->getYpos()  && y < (*btn)->getYpos() + (*btn)->getHeight()*2)
+				{
+					(*btn)->onClick();
+				}
+			}
+		}
+	}
+
+	void Core::addButton(std::shared_ptr<UIElement> _btn)
+	{
+		buttons.push_back(_btn);
 	}
 
 }

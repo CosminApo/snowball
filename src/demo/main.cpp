@@ -63,12 +63,12 @@ int main()
     std::shared_ptr<Entity> ui = core->addEntity();
     ui->addComponent<Renderer>();
     ui->getComponent<Renderer>()->setShader("shader.glsl");
-    ui->addComponent<UIElement>(camera2->getComponent<Camera>()->getRenderTexture(),"../curuthers/Whiskers_diffuse.png",100,100,0,0);
+    ui->addComponent<UIElement>(camera2->getComponent<Camera>()->getRenderTexture(),"button.png",50,50,0,0);
 
     std::shared_ptr<Entity> uis = core->addEntity();
     uis->addComponent<Renderer>();
     uis->getComponent<Renderer>()->setShader("shader.glsl");
-    uis->addComponent<UIElement>(camera2->getComponent<Camera>()->getRenderTexture(), "../curuthers/Whiskers_diffuse.png", 100, 100, 500,0);
+    uis->addComponent<UIElement>(camera2->getComponent<Camera>()->getRenderTexture(), "button.png", 50, 50, 400,0);
     core->start();
     
 
