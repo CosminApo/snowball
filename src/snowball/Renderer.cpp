@@ -26,8 +26,9 @@ namespace snowball
 			{
 				if (cam->getRenderTexture() == UIobj->getRenderTexture())
 				{
+					glm::mat4 id(1.0f);
 					shader->setMesh(shape);
-					shader->setUniform("u_View", getEntity()->getCore()->getCamera()->getView());
+					shader->setUniform("u_View", id);
 					shader->setUniform("u_Model", getEntity()->getComponent<Transform>()->getModelMat());
 					shader->setUniform("u_Projection", getEntity()->getCore()->getScreen()->getOrthoMat());
 					shader->render(cam->getRenderTexture());
