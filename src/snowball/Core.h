@@ -50,6 +50,10 @@ namespace snowball
 		void start();
 		void checkButtonPressed();
 		void addButton(std::shared_ptr<UIElement> _btn);
+		void handleCollision();
+		bool checkXCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2);
+		bool checkYCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2);
+		bool checkZCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2);
 	private:
 
 		friend struct snowball::Camera;

@@ -9,6 +9,7 @@
 #include "Camera.h"
 #include "Player.h"
 #include "UIElement.h"
+#include "Collider.h"
 
 using namespace snowball;
 

@@ -83,6 +83,25 @@ void Mesh::parse(const std::string& data)
   }
 }
 
+float Mesh::getWidth()
+{
+    return width;
+}
+
+float Mesh::getHeight()
+{
+    return height;
+}
+
+float Mesh::getDepth()
+{
+    return depth;
+}
+
+
+
+
+
 void Mesh::safeParse(const std::string& data, std::string& currentLine)
 {
   std::vector<std::string> lines;
@@ -93,7 +112,9 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
   std::vector<vec3> normals;
   std::vector<vec2> lmcs;
   std::vector<Face> faces;
-
+  float minX(1000), maxX(-1000);
+  float minY(1000), maxY(-1000);
+  float minZ(1000), maxZ(-1000);
 
   for(std::vector<std::string>::iterator lit = lines.begin();
     lit != lines.end(); lit++)
@@ -111,6 +132,15 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
       vec3 p(atof(tokens.at(1).c_str()),
         atof(tokens.at(2).c_str()),
         atof(tokens.at(3).c_str()));
+
+      if (p.x < minX) minX = p.x;
+      if (p.x > maxX) maxX = p.x;
+
+      if (p.y < minY) minY = p.y;
+      if (p.y > maxY) maxY = p.y;
+
+      if (p.z < minZ) minZ = p.z;
+      if (p.z > maxZ) maxZ = p.z;
 
       positions.push_back(p);
     }
@@ -176,6 +206,13 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
       faces.push_back(fq);
     }
   }
+  std::cout << minX << "," << maxX << std::endl;
+  std::cout << minY << "," << maxY << std::endl;
+  std::cout << minZ << "," << maxZ << std::endl;
+
+  width = maxX - minX;
+  height = maxY - minY;
+  depth = maxZ - minZ;
 
   if(positions.size() > 0)
   {

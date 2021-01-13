@@ -30,6 +30,22 @@ namespace snowball
         {
             getTransform()->translate(glm::vec3(+0.05f, 0, 0));
         }
+        if (getEntity()->getCore()->getKeyboard()->getKey(SDLK_UP))
+        {
+            getTransform()->translate(glm::vec3(0, +0.05f, 0));
+        }
+        if (getEntity()->getCore()->getKeyboard()->getKey(SDLK_DOWN))
+        {
+            getTransform()->translate(glm::vec3(0, -0.05f, 0));
+        }
+        if (getEntity()->getCore()->getKeyboard()->getKey(SDLK_RSHIFT))
+        {
+            getTransform()->translate(glm::vec3(0, 0, +0.05f));
+        }
+        if (getEntity()->getCore()->getKeyboard()->getKey(SDLK_RCTRL))
+        {
+            getTransform()->translate(glm::vec3(0, 0, -0.05f));
+        }
         if (getEntity()->getCore()->getKeyboard()->getKey(SDLK_p))
         {
             sc->playSound();

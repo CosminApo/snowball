@@ -16,6 +16,7 @@ namespace snowball
 		void setModel(std::string _path);
 		void setShader(std::string _path);
 		void setTexture(std::string _path);
+		std::shared_ptr<rend::Mesh> getShape();
 
 	private:
 		std::shared_ptr<rend::Shader> shader;

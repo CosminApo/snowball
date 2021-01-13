@@ -69,4 +69,8 @@ namespace snowball
 		shape->setTexture("u_Texture", tex); //NOTE, the name is the uniform name in the shader 
 
 	}
+	std::shared_ptr<rend::Mesh> Renderer::getShape()
+	{
+		return shape;
+	}
 }

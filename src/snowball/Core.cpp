@@ -1,6 +1,8 @@
 #include "core.h"
 #include "entity.h"
 #include "UIElement.h"
+#include "Collider.h"
+#include "Renderer.h"
 
 namespace snowball
 {
@@ -127,6 +129,8 @@ namespace snowball
 				entities.at(ei)->tick();
 			}
 
+			handleCollision();
+
 			glClearColor(0.3f, 0.4f, 0.8f, 1.0f);
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); //for future camera tech, clear screen after activating render buffer
 			glViewport(0,0, sc->getWindow_Width(),sc->getWindow_Height());
@@ -139,7 +143,7 @@ namespace snowball
 				{
 					entities.at(ei)->render();
 				}
-				//glViewport(0, 0, 200, 200);
+				glViewport(0, 0, 200, 200);
 
 			}
 
@@ -173,6 +177,101 @@ namespace snowball
 	void Core::addButton(std::shared_ptr<UIElement> _btn)
 	{
 		buttons.push_back(_btn);
+	}
+	int i = 0;
+	void Core::handleCollision()
+	{
+		for (size_t et = 0; et < entities.size(); et++) //et = Entity tested
+		{
+			if (entities.at(et)->getComponent<Collider>())
+			{
+				if (entities.at(et)->getComponent<Collider>()->getCollision()) //if et has collision
+				{
+					for (size_t eq = 0; eq < entities.size(); eq++) //eq = entity Queried
+					{
+						if (et != eq)
+						{
+							if (entities.at(eq)->getComponent<Collider>())
+							{
+								if (entities.at(eq)->getComponent<Collider>()->getCollision()) //check against all other entities with collision
+								{
+									if (checkXCollision(entities.at(et), entities.at(eq)))
+									{
+										if (checkYCollision(entities.at(et), entities.at(eq)))
+										{
+											if (checkZCollision(entities.at(et), entities.at(eq)))
+											{
+												i++;
+												std::cout << "Collison" << i << std::endl;
+											}		
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	bool Core::checkXCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2)
+	{
+		bool rtn = false;
+
+		float et_posX = _e1->getComponent<Transform>()->getPosition().x;
+		float et_width = _e1->getComponent<Renderer>()->getShape()->getWidth();
+
+		float eq_posX = _e2->getComponent<Transform>()->getPosition().x;
+		float eq_width = _e2->getComponent<Renderer>()->getShape()->getWidth();
+
+		if (et_posX - et_width/2 < eq_posX + eq_width/2)
+		{
+			if (et_posX + et_width/2 > eq_posX - eq_width/2)
+			{
+				rtn = true;		
+			}
+		}
+
+		return rtn;
+	}
+
+	bool Core::checkYCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2)
+	{
+		bool rtn = false;
+		float et_posY = _e1->getComponent<Transform>()->getPosition().y;
+		float et_height = _e1->getComponent<Renderer>()->getShape()->getWidth();
+
+		float eq_posY = _e2->getComponent<Transform>()->getPosition().y;
+		float eq_height = _e2->getComponent<Renderer>()->getShape()->getWidth();
+
+		if (et_posY + et_height > eq_posY - eq_height)
+		{
+			if (et_posY - et_height < eq_posY + eq_height)
+			{
+				rtn = true;
+			}
+		}
+		return rtn;
+	}
+
+	bool Core::checkZCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2)
+	{
+		bool rtn = false;
+		float et_posZ = _e1->getComponent<Transform>()->getPosition().z;
+		float et_depth = _e1->getComponent<Renderer>()->getShape()->getDepth();
+
+		float eq_posZ = _e2->getComponent<Transform>()->getPosition().z;
+		float eq_depth = _e2->getComponent<Renderer>()->getShape()->getDepth();
+
+		if (et_posZ + et_depth/2 > eq_posZ - eq_depth/2)
+		{
+			if (et_posZ - et_depth/2 < eq_posZ + eq_depth/2)
+			{
+				rtn = true;
+			}
+		}
+		return rtn;
 	}
 
 }
