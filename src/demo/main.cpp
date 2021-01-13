@@ -40,6 +40,26 @@ struct Controller : public Component
     }
 };
 
+struct PlayerCollider : public Collider
+{
+    void onCollision()
+    {
+        std::cout << "Collision detected" << std::endl;
+    }
+};
+
+struct MyButton : public UIElement
+{
+   void onTick()
+    {
+        if (getIsClicked())
+        {
+            std::cout << "Hello, I am a button \n";
+            setIsClicked(false);
+        }
+    }
+};
+
 int main()
 {
     std::shared_ptr<Core> core = Core::initialize();	
@@ -60,7 +80,7 @@ int main()
     pc->getEntity()->getComponent<Renderer>()->setTexture("../curuthers/Whiskers_diffuse.png");
   //pe->addComponent<Controller>();
     pc->getEntity()->getComponent<SoundSource>()->setListener(camera->getComponent<Camera>());
-    pe->addComponent<Collider>(true);
+    pe->addComponent<PlayerCollider>(true);
 
     std::shared_ptr<Entity> pe2 = core->addEntity();
     pe2->addComponent<Renderer>();
@@ -68,17 +88,17 @@ int main()
     pe2->getComponent<Renderer>()->setModel("../curuthers/curuthers.obj");
     pe2->getComponent<Renderer>()->setTexture("../curuthers/Whiskers_diffuse.png");
     pe2->getComponent<Transform>()->getTransform()->setPosition(glm::vec3(5.f, 0.f, -10.f));
-    pe2->addComponent<Collider>(true);
+    pe2->addComponent<PlayerCollider>(true);
 
     std::shared_ptr<Entity> ui = core->addEntity();
     ui->addComponent<Renderer>();
     ui->getComponent<Renderer>()->setShader("shader.glsl");
-    ui->addComponent<UIElement>(camera->getComponent<Camera>()->getRenderTexture(),"button.png",50,50,0,0);
+    ui->addComponent<MyButton>(camera->getComponent<Camera>()->getRenderTexture(),"button.png",50,50,0,0);
 
     std::shared_ptr<Entity> uis = core->addEntity();
     uis->addComponent<Renderer>();
     uis->getComponent<Renderer>()->setShader("shader.glsl");
-    uis->addComponent<UIElement>(camera->getComponent<Camera>()->getRenderTexture(), "button.png", 50, 50, 400,0);
+    uis->addComponent<MyButton>(camera->getComponent<Camera>()->getRenderTexture(), "button.png", 50, 50, 400,0);
 
     core->start();
     

@@ -10,6 +10,8 @@ namespace snowball
 	void UIElement::onInitialize(std::shared_ptr<rend::RenderTexture> _renderTexture, std::string _texturePath, int _width, int _height, int _xPos, int _yPos)
 	{
 		self = std::make_shared<UIElement>();
+		self->isClicked = false;
+		self->self = self;
 		self->width = _width;
 		self->height = _height;
 		self->xpos = _xPos;
@@ -38,10 +40,6 @@ namespace snowball
 		return self->renderTexture;
 	}
 
-	void UIElement::onClick()
-	{
-		std::cout << "Hello, I am a button located at: " << xpos << " , " << ypos << std::endl;
-	}
 
 	int UIElement::getXpos()
 	{
@@ -62,5 +60,12 @@ namespace snowball
 	{
 		return height;
 	}
-	
+	bool UIElement::getIsClicked()
+	{
+		return self->isClicked;
+	}
+	void UIElement::setIsClicked(bool _isClicked)
+	{
+		self->isClicked = _isClicked;
+	}
 }

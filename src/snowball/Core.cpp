@@ -3,6 +3,7 @@
 #include "UIElement.h"
 #include "Collider.h"
 #include "Renderer.h"
+#include "Button.h"
 
 namespace snowball
 {
@@ -168,7 +169,7 @@ namespace snowball
 			{
 				if (y > (*btn)->getYpos()  && y < (*btn)->getYpos() + (*btn)->getHeight()*2)
 				{
-					(*btn)->onClick();
+					(*btn)->setIsClicked(true);
 				}
 			}
 		}
@@ -178,7 +179,7 @@ namespace snowball
 	{
 		buttons.push_back(_btn);
 	}
-	int i = 0;
+
 	void Core::handleCollision()
 	{
 		for (size_t et = 0; et < entities.size(); et++) //et = Entity tested
@@ -201,8 +202,7 @@ namespace snowball
 										{
 											if (checkZCollision(entities.at(et), entities.at(eq)))
 											{
-												i++;
-												std::cout << "Collison" << i << std::endl;
+												entities.at(et)->getComponent<Collider>()->onCollision();
 											}		
 										}
 									}
