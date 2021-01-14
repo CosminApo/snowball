@@ -66,13 +66,16 @@ namespace snowball
 		void tick(); ///< Base tick function that handles events every tick. To be overwritten in child classes.
 		void render(); ///< Base tick function that handles events every render. To be overwritten in child classes.
 		
-
 		std::shared_ptr<Core> getCore(); ///< Returns a pointer to the Core object that this Entity is linked to. 
+		bool getCollider(); ///< Returns whether this Entity has a Collider or not.
+		void setCollider(bool _flag); ///< Sets whether this Entity has a Collider or not.
 
 	private:
 		std::vector<std::shared_ptr<Component>> components; ///< Stores a reference to each Component attached to this Entity.
 		std::weak_ptr<Core> core; ///< Stores a reference to the Core structure this Entity is linked to.
 		std::weak_ptr<Entity> self; ///< Stores a smart pointer to itself. (Used as a better "this" keyword)
+		
+		bool hasCollider = false;  ///< Stores whether this Entity has Colliider or not. Used for optimization.
 
 	};
 }

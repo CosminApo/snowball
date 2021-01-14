@@ -19,4 +19,12 @@ namespace snowball
     {
         return core.lock(); // Returns the Core structure linked to this Entity.
     }
+    bool Entity::getCollider()
+    {
+        return hasCollider; // Returns whether this Entity has a Collider.
+    }
+    void Entity::setCollider(bool _flag)
+    {
+        hasCollider = _flag;  // Enables / Disables the Collider flag.
+    }
 }

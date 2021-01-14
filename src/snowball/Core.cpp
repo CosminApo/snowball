@@ -175,7 +175,7 @@ namespace snowball
 	{
 		for (size_t et = 0; et < entities.size(); et++) // Loop through all the entities of the scene.
 		{
-			if (entities.at(et)->getComponent<Collider>()) // Get those with a collider.
+			if (entities.at(et)->getCollider()) // Get those with a collider.
 			{
 				if (entities.at(et)->getComponent<Collider>()->getCollision()) // Check if collision is enabled.
 				{
@@ -183,7 +183,7 @@ namespace snowball
 					{
 						if (et != eq) // If its not testing against itself.
 						{
-							if (entities.at(eq)->getComponent<Collider>()) // If the other entity has a collider.
+							if (entities.at(eq)->getCollider()) // If the other entity has a collider.
 							{
 								if (entities.at(eq)->getComponent<Collider>()->getCollision()) // Check if collision is enabled.
 								{
