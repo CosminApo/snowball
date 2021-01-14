@@ -9,6 +9,7 @@
 #include "keyboard.h" /* Managing Keyboard input */
 #include "Exception.h" /* Handling exceptions */
 #include "Mouse.h" /* Managing Mouse input */
+#include "CollisionUtil.h" /* Utilitiy class for collision checks */
 
 namespace snowball
 {
@@ -50,9 +51,7 @@ namespace snowball
 		void checkButtonPressed(); ///< Checks if a button is currently pressed.
 		void addButton(std::shared_ptr<UIElement> _btn); ///< Adds a button to the list of buttons.
 		void handleCollision(); ///< Handles collision checks.
-		bool checkXCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2); ///< Checks for collision in the X axis.
-		bool checkYCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2); ///< Checks for collision in the Y axis.
-		bool checkZCollision(std::shared_ptr<Entity> _e1, std::shared_ptr<Entity> _e2); ///< Checks for collision in the Z axis.
+		
 
 	private:
 		/* Rendering */
