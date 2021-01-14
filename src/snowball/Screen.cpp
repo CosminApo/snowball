@@ -1,4 +1,6 @@
 #include "screen.h"
+#include <iostream>
+
 namespace snowball
 {
 	int Screen::getWindow_Height()
@@ -19,7 +21,14 @@ namespace snowball
 			0.1f,								    // Near clipping plane.
 			100.0f								    // Far clipping plane. 
 		);
-		return proj;
+		if (proj == glm::mat4(0))
+		{
+			std::cout << "Failed to create persepctive matrix" << std::endl;
+		}
+		else
+		{
+			return proj;
+		}
 	}
 	glm::mat4 Screen::getOrthoMat()
 	{
@@ -31,6 +40,13 @@ namespace snowball
 			-100.1f,					// Near clipping plane.
 			100.f						// Far clipping plane.
 		);
-		return proj;
+		if (proj == glm::mat4(0))
+		{
+			std::cout << "Failed to create persepctive matrix" << std::endl;
+		}
+		else
+		{
+			return proj;
+		}
 	}
 }

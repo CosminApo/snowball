@@ -112,6 +112,8 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
   std::vector<vec3> normals;
   std::vector<vec2> lmcs;
   std::vector<Face> faces;
+
+  /* Bounding box parameters */
   float minX(1000), maxX(-1000);
   float minY(1000), maxY(-1000);
   float minZ(1000), maxZ(-1000);
@@ -146,6 +148,7 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
     }
     else if(tokens.at(0) == "vt")
     {
+        /* Note, this was broken. Added 1.0f - to fix it*/
       vec2 tc(atof(tokens.at(1).c_str()),
          1.0f -  atof(tokens.at(2).c_str()));
 
@@ -206,9 +209,6 @@ void Mesh::safeParse(const std::string& data, std::string& currentLine)
       faces.push_back(fq);
     }
   }
-  std::cout << minX << "," << maxX << std::endl;
-  std::cout << minY << "," << maxY << std::endl;
-  std::cout << minZ << "," << maxZ << std::endl;
 
   width = maxX - minX;
   height = maxY - minY;

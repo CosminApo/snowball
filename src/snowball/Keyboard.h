@@ -21,6 +21,5 @@ namespace snowball
 		std::vector<int> keys; ///< Stores all the currently pressed keys.
 		std::vector<int> downKeys; ///< Stores the keys pressed this frame.
 		std::vector<int> upKeys; ///< Stores the keys released this frame.
-
 	};
 }

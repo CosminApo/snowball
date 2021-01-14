@@ -55,7 +55,6 @@ namespace snowball
 			alcCloseDevice(rtn->device);
 			throw snowball::Exception("Failed to make context current");
 		}
-
 		return rtn;
 	}
 	std::shared_ptr<Entity> Core::addEntity()
@@ -205,7 +204,5 @@ namespace snowball
 			}
 		}
 	}
-
-
 }
 

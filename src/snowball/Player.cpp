@@ -17,9 +17,7 @@ namespace snowball
         sc = getEntity()->addComponent<SoundSource>("Jump3"); // Add a soundsource component.
         sc->setDirectional(true); // Enable directional sound.
         getTransform()->setPosition(glm::vec3(0, 0, -10.f)); // Move the object back a bit.
-
     }
-
     void Player::onTick()
     {
         /* Handle some keyboard inputs to move the player around and play sound. */

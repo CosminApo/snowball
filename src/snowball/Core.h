@@ -23,7 +23,6 @@ namespace snowball
 	struct Texture;
 	struct RenderTexture;
 	struct UIElement;
-
 	/**
 	* \brief The core of the engine.
 	* 
@@ -51,8 +50,6 @@ namespace snowball
 		void checkButtonPressed(); ///< Checks if a button is currently pressed.
 		void addButton(std::shared_ptr<UIElement> _btn); ///< Adds a button to the list of buttons.
 		void handleCollision(); ///< Handles collision checks.
-		
-
 	private:
 		/* Rendering */
 		SDL_Window* window; ///< Stores a reference to the SDL window. Raw pointer used because of SDL.

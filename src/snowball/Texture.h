@@ -14,7 +14,6 @@ namespace snowball
 	{
 		void onLoad(const std::string _path); ///< Base loading function inherited from Resource. 
 		std::shared_ptr<rend::Texture> getTexture(); ///< Returns the texture stored. 
-
 	private:
 		std::shared_ptr<rend::Texture> tex; ///< Stores a reference to a Rend Texture, used to store the texture data. 
 	};

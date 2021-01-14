@@ -1,6 +1,5 @@
 #include "component.h" /* Included for inheritance */
 
-
 namespace snowball
 {
 	/**

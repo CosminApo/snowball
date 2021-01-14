@@ -25,13 +25,10 @@ namespace snowball
         void render(); ///< Base render function inherited from Entity. Used for rendering every frame.
         virtual void onTick(); ///< Function that handles events every tick. To be overwritten in child classes.
         virtual void onRender(); ///< Function that handles events every render. To be overwritten in child classes.
-
         virtual void onInitialize(); ///< Function that handles events on initialization. To be overwritten in child classes.
-
         std::shared_ptr<Entity> getEntity();  ///< Returns a pointer to the Entity structure this Component is linked to.
         std::shared_ptr<Core> getCore(); ///< Returns a pointer to the Core structure linked to the Enitity that this Component is attached to.
         std::shared_ptr<Transform> getTransform(); ///< Shortcut function to access the Transform Component.
-
     private:
         std::weak_ptr<Entity> entity; ///< Stores a reference to the Entity structure this Component is linked to. 
     };

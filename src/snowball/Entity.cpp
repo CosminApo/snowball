@@ -17,6 +17,10 @@ namespace snowball
 	}
     std::shared_ptr<Core> Entity::getCore()
     {
+        if (core.lock() == NULL)
+        {
+            throw snowball::Exception("FATAL: Hierarchy broke!");
+        }
         return core.lock(); // Returns the Core structure linked to this Entity.
     }
     bool Entity::getCollider()

@@ -30,6 +30,10 @@ namespace snowball
 	}
 	std::shared_ptr<ResourceManager> Resource::getRm()
 	{
+		if (rm.lock() == NULL)
+		{
+			throw snowball::Exception("FATAL: Hierarchy broke!");
+		}
 		return rm.lock(); // Return the Resource Manager.
 	}
 }

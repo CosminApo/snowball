@@ -15,11 +15,7 @@ namespace snowball
 		Exception(const std::string& message);  ///< Constructor that takes in an error message as a string.
 		virtual ~Exception() throw(); ///< Virtual destructor so that its always called.
 		virtual const char* what() const throw(); ///< Function that outputs the message.
-
 	private:
 		std::string message; ///< The error message to be displayed.
-
 	};
-
-
 }

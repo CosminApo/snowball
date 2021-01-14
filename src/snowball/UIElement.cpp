@@ -23,7 +23,7 @@ namespace snowball
 		std::shared_ptr<Renderer> rend = getEntity()->getComponent<Renderer>(); // Gets the Renderer attached to this Entity.
 		if (!rend) // Error checking to see if a renderer exists.
 		{
-			throw snowball::Exception("Failed to get renderer component");
+			throw snowball::Exception("FATAL: Failed to get renderer component. Hierarchy Broke!");
 		}
 		rend->shape = std::make_shared<rend::Mesh>(); // Initialize the Shape attribute.
 

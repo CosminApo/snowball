@@ -5,7 +5,6 @@
 #include "sound.h" /* Loading in sound*/
 #include "glm/glm.hpp" /* glm::vec3*/
 
-
 namespace snowball
 {
 	// Forward declared structures.
@@ -29,7 +28,5 @@ namespace snowball
 		std::weak_ptr<Sound> sound; ///< Stores the sound loader.
 		bool directional; ///< Stores whether sound is directional or not.
 		std::shared_ptr<Camera> listener; ///< Stores a reference to a specific object to use as a listener.
-
 	};
-
 }

@@ -6,6 +6,7 @@
 #include "Shader.h"
 #include "Texture.h"
 #include "UIElement.h"
+#include <iostream>
 
 namespace snowball
 {
@@ -46,19 +47,40 @@ namespace snowball
 	void Renderer::setModel(std::string _path)
 	{
 		std::shared_ptr<Model> modelLoader = getEntity()->getCore()->getRm()->load<Model>(_path); // Load the model at the specific path.
-		shape = modelLoader->getModel(); // Store the model locally.
+		if (modelLoader == NULL)
+		{
+			std::cout << "Failed to load model" << std::endl;
+		}
+		else
+		{
+			shape = modelLoader->getModel(); // Store the model locally.
+		}
 	}
 
 	void Renderer::setShader(std::string _path)
 	{
 		std::shared_ptr<Shader> shaderLoader = getEntity()->getCore()->getRm()->load<Shader>(_path); // Load the shader at the specific path.
-		shader = shaderLoader->getShader(); // Store the shader locally.
+		if (shaderLoader == NULL)
+		{
+			std::cout << "Failed to load model" << std::endl;
+		}
+		else
+		{
+			shader = shaderLoader->getShader(); // Store the shader locally.
+		}
 	}
 	void Renderer::setTexture(std::string _path)
 	{
 		std::shared_ptr<Texture> textureLoader = getEntity()->getCore()->getRm()->load<Texture>(_path); // Load the texture at the specific path.
-		tex = textureLoader->getTexture(); // Store the Texture locally.
-		shape->setTexture("u_Texture", tex); //NOTE, the name is the uniform name in the shader 
+		if (textureLoader == NULL)
+		{
+			std::cout << "Failed to load model" << std::endl;
+		}
+		else
+		{
+			tex = textureLoader->getTexture(); // Store the Texture locally.
+			shape->setTexture("u_Texture", tex); //NOTE, the name is the uniform name in the shader 
+		}
 
 	}
 	std::shared_ptr<rend::Mesh> Renderer::getShape()

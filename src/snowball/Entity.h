@@ -10,18 +10,15 @@ namespace snowball
 	// Forward declared structures.
 	struct Component;
 	struct Core;
-
 	/**
 	*  \brief The base class for the Entities.
 	*
 	*  The Entity part of the Entity - Components system. An Entity can be thought of
 	*  as a GameObject in other Engine. On their own, they are empty containers without any functionality,
 	*  but they can be linked to multiple Components to gain features.
-	*
 	*/
 	struct Entity
 	{
-
 		friend struct ::snowball::Core; ///< Friends with Core to access the Self and Core pointers.
 
 		template <typename T>
@@ -35,7 +32,6 @@ namespace snowball
 
 			return rtn;
 		}
-
 		template <typename T, typename ... Args>
 		std::shared_ptr<T> addComponent(Args&&... args) ///< Template function for adding a Component with paramaters.
 		{
@@ -47,7 +43,6 @@ namespace snowball
 
 			return rtn;
 		}
-
 		template <typename T>
 		std::shared_ptr<T> getComponent() ///< Template function for returning a Component from the list of Components.
 		{
@@ -61,22 +56,17 @@ namespace snowball
 			}
 			return NULL;
 			throw snowball::Exception("Failed to get Component. \n");
-		}
-		
+		}		
 		void tick(); ///< Base tick function that handles events every tick. To be overwritten in child classes.
-		void render(); ///< Base tick function that handles events every render. To be overwritten in child classes.
-		
+		void render(); ///< Base tick function that handles events every render. To be overwritten in child classes.		
 		std::shared_ptr<Core> getCore(); ///< Returns a pointer to the Core object that this Entity is linked to. 
 		bool getCollider(); ///< Returns whether this Entity has a Collider or not.
 		void setCollider(bool _flag); ///< Sets whether this Entity has a Collider or not.
-
 	private:
 		std::vector<std::shared_ptr<Component>> components; ///< Stores a reference to each Component attached to this Entity.
 		std::weak_ptr<Core> core; ///< Stores a reference to the Core structure this Entity is linked to.
-		std::weak_ptr<Entity> self; ///< Stores a smart pointer to itself. (Used as a better "this" keyword)
-		
+		std::weak_ptr<Entity> self; ///< Stores a smart pointer to itself. (Used as a better "this" keyword)		
 		bool hasCollider = false;  ///< Stores whether this Entity has Colliider or not. Used for optimization.
-
 	};
 }
 

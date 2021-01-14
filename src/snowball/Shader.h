@@ -1,7 +1,6 @@
 #include "Resource.h" /* Included for inheritance */
 #include "rend/rend.h" /* rend::Shader */
 
-
 namespace snowball
 {
 	/**

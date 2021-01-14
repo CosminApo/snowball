@@ -1,6 +1,7 @@
 #include "sound.h"
 #include <rend/rend.h>
 #include "stb_vorbis.h"
+#include <iostream>
 
 namespace snowball
 {
@@ -27,7 +28,7 @@ namespace snowball
 
 		if (samples == -1) // If there are no samples it means it didn't decode.
 		{
-			throw rend::Exception("Failed to open file '" + _fileName + " '");
+			std::cout << "Failed to open soundfile: " << _fileName << std::endl;
 		}
 
 		// Note: vorbis only loads 16bit +, so format is always 16bit 

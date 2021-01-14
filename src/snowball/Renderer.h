@@ -22,11 +22,9 @@ namespace snowball
 		void setShader(std::string _path); ///< Sets the Shader of the Entity.
 		void setTexture(std::string _path); ///< Sets the Texture of the Entity.
 		std::shared_ptr<rend::Mesh> getShape(); ///< Returns the Model stored.
-
 	private:
 		std::shared_ptr<rend::Shader> shader; ///< Stores the Shader associated with the Entity this Render Component is linked to.
 		std::shared_ptr<rend::Mesh> shape; ///< Stores the Model associated with the Entity this Render Component is linked to.
 		std::shared_ptr<rend::Texture> tex; ///< Stores the Texture associated with the Entity this Render Component is linked to.
-
 	};
 }

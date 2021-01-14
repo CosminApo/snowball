@@ -17,7 +17,6 @@ namespace snowball
 		rend::mat4 getView(); ///< Generates and returns the view matrix.
 		std::shared_ptr<rend::RenderTexture> getRenderTexture(); ///< Returns the Render Texture stored. Used for rendering on a specific target.
 		void addRenderTexture(); //Creates a render texture, stores it in a member variable.
-
 	private:
 		std::shared_ptr<rend::RenderTexture> renderTexture; ///< Stores a render texture. Used for rendering on a specific target.
 	}; 

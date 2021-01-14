@@ -2,7 +2,6 @@
 #include "rend/rend.h" /* rend::Mesh */
 #include <memory> /* smart pointers */
 
-
 namespace snowball
 {
 	/**
@@ -15,7 +14,6 @@ namespace snowball
 	{
 		void onLoad(const std::string _path); ///< Base loading function inherited from Resource. 
 		std::shared_ptr<rend::Mesh> getModel(); ///< Returns the model stored. 
-
 	private:
 		std::shared_ptr<rend::Mesh> model;  ///< Stores a reference to a Rend Mesh, used to store the 3D model. 
 	};

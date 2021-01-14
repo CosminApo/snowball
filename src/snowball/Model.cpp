@@ -15,7 +15,7 @@ namespace snowball
 								   // Note that this only works for Windows
 		if (!file.is_open()) // If the file was not opened.
 		{
-			throw snowball::Exception("Failed to open model file");
+			std::cout << "Failed to open model: " << _path << std::endl;
 		}
 
 		std::string content;
