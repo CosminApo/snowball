@@ -68,7 +68,6 @@ add_library(snowball
   src/snowball/UIElement.cpp
   src/snowball/Mouse.cpp
     src/snowball/Collider.cpp
-  src/snowball/Button.cpp
 
   src/snowball/Core.h
   src/snowball/Entity.h
@@ -92,7 +91,6 @@ add_library(snowball
   src/snowball/UIElement.h
   src/snowball/Mouse.h
   src/snowball/Collider.h
-  src/snowball/Button.h
 
 
 )

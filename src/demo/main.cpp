@@ -68,7 +68,7 @@ int main()
     std::shared_ptr<Entity> camera = core->addEntity();
     camera->addComponent<Camera>(true);
     camera->addComponent<Controller>();
-    camera->getComponent<Camera>()->addRenderTexture("../curuthers/Whiskers_diffuse.png");
+    camera->getComponent<Camera>()->addRenderTexture();
 
     std::shared_ptr<Entity> camera2 = core->addEntity();
     camera2->addComponent<Camera>();

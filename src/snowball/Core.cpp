@@ -3,7 +3,6 @@
 #include "UIElement.h"
 #include "Collider.h"
 #include "Renderer.h"
-#include "Button.h"
 
 namespace snowball
 {

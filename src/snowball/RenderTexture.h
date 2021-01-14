@@ -7,7 +7,7 @@ namespace snowball
 {
 	struct RenderTexture : public Resource
 	{
-		void onLoad(const std::string _path);
+		void onLoad();
 		std::shared_ptr<rend::RenderTexture> getTexture();
 
 	private:

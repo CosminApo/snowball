@@ -35,8 +35,21 @@ namespace snowball
 			rs->load(_path);
 
 			resources.push_back(rs);
+			return rs;				
+		}
+
+		template <typename T>
+		std::shared_ptr<T> load()
+		{
+			//if it wasnt then load it
+			std::shared_ptr<T> rs = std::make_shared<T>();
+
+			//TBF add to list only if loaded
+			rs->setRm(self);
+			rs->load();
+
+			resources.push_back(rs);
 			return rs;
-				
 		}
 
 		void virtual onLoad(const std::string _path) {};

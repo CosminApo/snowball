@@ -10,7 +10,9 @@ namespace snowball
 	struct Resource
 	{
 		void load(const std::string _path);
+		void load();
 		virtual void onLoad(const std::string _path);
+		virtual void onLoad();
 		std::string getPath();
 		void setRm(std::shared_ptr<ResourceManager> _rm);
 		std::shared_ptr<ResourceManager> getRm();

@@ -4,7 +4,7 @@
 
 namespace snowball
 {
-	void RenderTexture::onLoad(const std::string _path)
+	void RenderTexture::onLoad()
 	{
 		tex = getRm()->getCore()->context->createRenderTexture();
 	}

@@ -7,8 +7,16 @@ namespace snowball
 		path = _path;
 		onLoad(_path);
 	}
+
+	void Resource::load()
+	{
+		onLoad();
+	}
 	
 	void Resource::onLoad(const std::string _path)
+	{
+	}
+	void Resource::onLoad()
 	{
 	}
 	std::string Resource::getPath()
