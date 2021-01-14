@@ -10,7 +10,7 @@ namespace snowball
     struct Core;
     struct Transform;
     /** 
-    * \brief Provides the base class for the components.
+    * \brief The base class for the components.
     * 
     * The components part of the Entity - Components system. 
     * A Component adds a specific functionality to an Entity, for example the ability to be shown on screen, 
@@ -33,7 +33,7 @@ namespace snowball
         std::shared_ptr<Transform> getTransform(); ///< Shortcut function to access the Transform Component.
 
     private:
-        std::weak_ptr<Entity> entity; ///< Stores the Entity structure this Component is linked to. 
+        std::weak_ptr<Entity> entity; ///< Stores a reference to the Entity structure this Component is linked to. 
     };
     
 }

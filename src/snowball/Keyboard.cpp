@@ -2,12 +2,11 @@
 
 namespace snowball
 {
-	//maybe refractor this three with some macro / enum
 	bool Keyboard::getKey(int key)
 	{
-		for (size_t ki = 0; ki < keys.size(); ki++)
+		for (size_t ki = 0; ki < keys.size(); ki++) // Loop through all the keys currently pressed.
 		{
-			if (keys.at(ki) == key)
+			if (keys.at(ki) == key) // If the key matches the one queried. 
 			{
 				return true;
 			}
@@ -16,9 +15,9 @@ namespace snowball
 	}
 	bool Keyboard::getUpKey(int key)
 	{
-		for (size_t ki = 0; ki < upKeys.size(); ki++)
+		for (size_t ki = 0; ki < upKeys.size(); ki++) // Loop through all the keys pressed this frame.
 		{
-			if (upKeys.at(ki) == key)
+			if (upKeys.at(ki) == key) // If the key matches the one queried. 
 			{
 				return true;
 			}
@@ -27,9 +26,9 @@ namespace snowball
 	}
 	bool Keyboard::getDownKey(int key)
 	{
-		for (size_t ki = 0; ki < downKeys.size(); ki++)
+		for (size_t ki = 0; ki < downKeys.size(); ki++) // Loop through all the keys released this frame.
 		{
-			if (downKeys.at(ki) == key)
+			if (downKeys.at(ki) == key) // If the key matches the one queried. 
 			{
 				return true;
 			}
@@ -38,9 +37,9 @@ namespace snowball
 	}
 	void Keyboard::deleteKey(int& key)
 	{
-		for (std::vector<int>::iterator it = keys.begin(); it != keys.end();)
+		for (std::vector<int>::iterator it = keys.begin(); it != keys.end();) // Loop through all the keys currently pressed.
 		{
-			if (*it == key)
+			if (*it == key) // If the key matches the one queried. 
 			{
 				//delete key 
 				it = keys.erase(it);

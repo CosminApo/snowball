@@ -10,7 +10,7 @@ namespace snowball
 	*/
 	struct Collider : public Component
 	{
-		void onInitialize(bool _collisionEnabled); ///< Base initialize function inherited from component.
+		void onInitialize(bool _collisionEnabled); ///< Base initialize function inherited from Component. Used for creating the object.
 		bool getCollision(); ///< Returns true if collision is enabled, false if not.
 		virtual void onCollision() = 0; ///< Function that handles events on collision. To be overwritten in child classes. 
 	private:
