@@ -12,7 +12,7 @@ namespace snowball
 		model = getRm()->getCore()->context->createMesh(); // Create a mesh using the rend context
 
 		std::ifstream file(_path); // Open the file at the specified path.
-								   // Note that this only works for VS
+								   // Note that this only works for Windows
 		if (!file.is_open()) // If the file was not opened.
 		{
 			throw snowball::Exception("Failed to open model file");

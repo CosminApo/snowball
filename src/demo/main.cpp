@@ -1,6 +1,6 @@
 #include <snowball/snowball.h>
 #include <SDL.h>
-
+#include <iostream>
 
 
 struct Controller : public Component
@@ -72,7 +72,6 @@ int main()
 
     std::shared_ptr<Entity> camera2 = core->addEntity();
     camera2->addComponent<Camera>();
- 
 
     std::shared_ptr<Player> pc = pe->addComponent<Player>();
     pc->getEntity()->getComponent<Renderer>()->setShader("shader.glsl");

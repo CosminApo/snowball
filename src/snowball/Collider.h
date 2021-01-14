@@ -6,7 +6,6 @@ namespace snowball
 	* \brief The class responsible for enabling Bounding Box collision detection.
 	*  
 	* This class is used to enable collision for specific entities.
-	* 
 	*/
 	struct Collider : public Component
 	{

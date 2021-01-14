@@ -7,7 +7,7 @@
 
 namespace snowball
 {
-	// Forward declared structures
+	// Forward declared structures.
 	struct Component;
 	struct Core;
 

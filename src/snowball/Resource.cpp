@@ -4,15 +4,16 @@ namespace snowball
 {
 	void Resource::load(const std::string _path)
 	{
-		path = _path;
-		onLoad(_path);
+		path = _path; // Store the path locally.
+		onLoad(_path); // Call the on load function.
 	}
 
 	void Resource::load()
 	{
-		onLoad();
+		onLoad(); // Call the on load function.
 	}
 	
+	/* Both the onLoad functions are empty since they have to be overwritten by child classes*/
 	void Resource::onLoad(const std::string _path)
 	{
 	}
@@ -21,14 +22,14 @@ namespace snowball
 	}
 	std::string Resource::getPath()
 	{
-		return path;
+		return path; // Return the path of the Resource.
 	}
 	void Resource::setRm(std::shared_ptr<ResourceManager> _rm)
 	{
-		rm = _rm;
+		rm = _rm; // Set the Resource Manager.
 	}
 	std::shared_ptr<ResourceManager> Resource::getRm()
 	{
-		return rm.lock();
+		return rm.lock(); // Return the Resource Manager.
 	}
 }
